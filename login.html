@@ -22,7 +22,6 @@
                         <a href="/">Home</a>
                         <a href="https://github.com/OneLLM-dev/documentation">Documentation</a>
                         <a href="pricing.html">Pricing</a>
-                        <!-- Add class="active" to current page link -->
                         <a href="dashboard.html">Dashboard</a>
                     </div>
                 </nav>
@@ -32,11 +31,11 @@
         <div class="container">
             <div class="auth-container">
                 <div class="auth-header">
-                    <h1>Create Your OneLLM Account</h1>
-                    <p>Get started with a unified API for all your AI needs</p>
+                    <h1>Log In to Your Account</h1>
+                    <p>Access your OneLLM dashboard and API</p>
                 </div>
 
-                <form id="signup-form">
+                <form id="login-form">
                     <div class="form-group">
                         <label for="email">Email</label>
                         <input
@@ -55,12 +54,7 @@
                             class="form-control"
                             required
                         />
-                        <small class="form-text"
-                            >Password must be at least 8 characters and include
-                            a number and special character</small
-                        >
                     </div>
-
 
                     <button type="submit" class="btn btn-primary btn-block">
                         Log in
@@ -86,31 +80,6 @@
                     <div class="footer-links">
                         <div class="footer-column">
                             <h4>Product</h4>
-                            <a href="docs.html">Documentation</a>
-                            <a href="pricing.html">Pricing</a>
-                        </div>
-                        <div class="footer-column">
-                            <h4>Legal</h4>
-                            <a href="#">Terms</a>
-                            <a href="#">Privacy</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="footer-bottom"></div>
-            </div>
-        </footer>
-
-        <!-- Remove this duplicate footer -->
-        <footer>
-            <div class="container">
-                <div class="footer-content">
-                    <div class="footer-brand">
-                        <h3>OneLLM</h3>
-                        <p>The unified API for all your AI needs</p>
-                    </div>
-                    <div class="footer-links">
-                        <div class="footer-column">
-                            <h4>Product</h4>
                             <a href="https://github.com/OneLLM-dev/documentation">Documentation</a>
                             <a href="pricing.html">Pricing</a>
                         </div>
@@ -124,5 +93,6 @@
                 <div class="footer-bottom"></div>
             </div>
         </footer>
+        <script src="assets/js/auth.js"></script>
     </body>
 </html>

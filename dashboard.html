@@ -5,9 +5,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <title>Dashboard - OneLLM</title>
         <link rel="stylesheet" href="assets/css/main.css" />
-
-        <!-- Add any additional CSS files specific to this page -->
-        <!-- <link rel="stylesheet" href="../assets/css/your-custom-page.css" /> -->
+        <link rel="stylesheet" href="assets/css/dashboard.css" />
         <link
             rel="stylesheet"
             href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
@@ -22,14 +20,12 @@
                         <a href="/">Home</a>
                         <a href="https://github.com/OneLLM-dev/documentation">Documentation</a>
                         <a href="pricing.html">Pricing</a>
-                        <!-- Add class="active" to current page link -->
-                        <a href="dashboard.html">Dashboard</a>
+                        <a href="dashboard.html" class="active">Dashboard</a>
                     </div>
                     <div class="auth-buttons">
+                        <!-- This will be dynamically replaced with user info or login/signup buttons -->
                         <a href="login.html" class="btn btn-outline">Login</a>
-                        <a href="signup.html" class="btn btn-primary"
-                            >Sign Up</a
-                        >
+                        <a href="signup.html" class="btn btn-primary">Sign Up</a>
                     </div>
                 </nav>
             </div>
@@ -38,15 +34,15 @@
         <!-- Main Content Section -->
         <section class="page-header">
             <div class="container">
-                <h1>Your Page Title</h1>
-                <p>Your page description goes here.</p>
+                <h1>Your Dashboard</h1>
+                <p>Manage your OneLLM account and API usage</p>
             </div>
         </section>
 
         <section class="content-section">
-            <div class="container">
-                <!-- Your page content goes here -->
-                <p>This is where your main content will go.</p>
+            <div class="container dashboard-content">
+                <!-- Content will be dynamically populated by JavaScript -->
+                <p>Loading your account information...</p>
             </div>
         </section>
 
@@ -75,7 +71,6 @@
             </div>
         </footer>
         <script src="assets/js/main.js"></script>
-        <!-- Add any additional JS files specific to this page -->
-        <!-- <script src="../assets/js/your-custom-page.js"></script> -->
+        <script src="assets/js/auth.js"></script>
     </body>
 </html>
