@@ -23,12 +23,10 @@ console.log("Login response data:", data);
 
  if (data.user) {
   console.log("User email:", data.user.email);
-  console.log("API Key:", data.user.apikey);
   console.log("Balance:", data.user.balance);
   // Wrap user inside a similar structure
   return {
     email: data.user.email,
-    apikey: data.user.apikey,
     balance: data.user.balance,
   };
 }else {
@@ -58,7 +56,6 @@ async function signup(email, password) {
   const data = await response.json();
   console.log("Signup response data:", data);
   console.log("User email:", data.email);
-  console.log("API Key:", data.apikey);
   console.log("Balance:", data.balance);
   return data;
 }
@@ -96,13 +93,10 @@ document.addEventListener("DOMContentLoaded", () => {
       signup(email, password)
         .then((res) => {
           console.log("Signup success:", res);
-          storeUserData(res); // Store user data
-          alert("Signup successful!");
-          window.location.href = "dashboard.html"; // Redirect to dashboard
+          window.location.href = "login.html"; // Redirect to dashboard
         })
         .catch((err) => {
           console.error("Signup failed:", err);
-          alert("Signup failed!");
         });
     });
   }
@@ -119,12 +113,10 @@ document.addEventListener("DOMContentLoaded", () => {
         .then((res) => {
           console.log("Login success:", res);
           storeUserData(res); // Store user data
-          alert("Login successful!");
           window.location.href = "dashboard.html"; // Redirect to dashboard
         })
         .catch((err) => {
           console.error("Login failed:", err);
-          alert("Login failed!");
         });
     });
   }
@@ -174,41 +166,73 @@ function initDashboard() {
   }
 
   // Update content section with user data
-  const contentSection = document.querySelector(".content-section .container");
-  if (contentSection) {
-    contentSection.innerHTML = `
-      <div class="stats-grid">
-        <div class="stat-card">
-          <div class="stat-title">Email</div>
-          <div class="stat-value">${userData.email}</div>
-        </div>
-        <div class="stat-card">
-          <div class="stat-title">API Key</div>
-          <div class="stat-value">${userData.apikey || 'No API Key'}</div>
-        </div>
-        <div class="stat-card">
-          <div class="stat-title">Balance</div>
-          <div class="stat-value">${userData.balance || 0}</div>
-        </div>
-      </div>
+const contentSection = document.querySelector(".content-section .container");
+const apiKeys = ["oa-12345678912345678900", "oa-12345678912345678900", "oa-12345678912345678900", "oa-12345678912345678900"]; // Replace this with actual fetch if needed
 
-      <div class="api-key-section">
-        <div class="api-key-header">
-          <h2>Your API Key</h2>
-        </div>
-        <div class="api-key-container">
-          <div class="api-key-value">${userData.apikey || 'No API Key available'}</div>
-          <div class="api-key-actions">
-            <button class="btn btn-outline btn-sm">Copy</button>
-          </div>
-        </div>
-        <div class="api-key-warning">
-          <i class="fas fa-exclamation-triangle"></i>
-          <span>Keep your API key secure. Do not share it publicly.</span>
-        </div>
+if (contentSection) {
+  contentSection.innerHTML = `
+    <div class="stats-grid">
+      <div class="stat-card">
+        <div class="stat-title">Email</div>
+        <div class="stat-value">${userData.email}</div>
       </div>
-    `;
+      <div class="stat-card">
+        <div class="stat-title">Balance</div>
+        <div class="stat-value">${userData.balance || 0}</div>
+      </div>
+    </div>
+  `;
 
+  contentSection.insertAdjacentHTML("beforeend", `
+    <div class="api-key-section">
+      <div class="api-key-header">
+        <h2>Your API Keys</h2>
+        <button id="generate-api-btn" class="btn btn-primary btn-sm">Generate API Key</button>
+        <p class="api-key-warning"><i class="fas fa-exclamation-triangle"></i> Keep your API keys secret</p>
+      </div>
+      <table class="usage-table" id="api-keys-table">
+        <thead>
+          <tr>
+            <th>Number</th>
+            <th>API Key</th>
+          </tr>
+        </thead>
+        <tbody>
+          ${apiKeys.slice(0, 10).map((key, index) => `
+            <tr>
+              <td>${index + 1}</td>
+              <td><code class="api-key-value">${key}</code></td>
+            </tr>
+          `).join("")}
+        </tbody>
+      </table>
+    </div>
+  `);
+
+  // Event listener for Generate button
+  document.getElementById("generate-api-btn").addEventListener("click", async () => {
+    const result = await callApiCommand({
+      functionType: "NewAPI",
+      email: userData.email,
+      password: "wedFF1234"
+    });
+          console.log(result)
+
+    if (result.type === "success") {
+      const tableBody = document.querySelector("#api-keys-table tbody");
+      const newIndex = tableBody.rows.length + 1;
+      const newKeyRow = `
+        <tr>
+          <td>${newIndex}</td>
+          <td><code class="api-key-value">${result.data}</code></td>
+        </tr>
+      `;
+      tableBody.insertAdjacentHTML("beforeend", newKeyRow);
+    } else {
+      alert("Failed to generate API key: " + (result?.message || "Unknown error"));
+    }
+  });
+}
     // Add copy functionality for API key
     const copyBtn = contentSection.querySelector(".api-key-actions .btn");
     if (copyBtn) {
@@ -218,5 +242,5 @@ function initDashboard() {
         alert("API key copied to clipboard!");
       });
     }
-  }
+  
 }
