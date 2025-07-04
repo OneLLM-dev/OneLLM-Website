@@ -6,11 +6,11 @@ async function callApiCommand({ functionType, email, password }) {
 
   try {
     const res = await fetch(url, {
-      method: "GET"
+      method: "GET",
     });
 
     const text = await res.text();
-    console.log(text)
+    console.log(text);
 
     if (!text) {
       console.error("Empty response from server");
