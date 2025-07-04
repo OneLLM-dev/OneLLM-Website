@@ -26,6 +26,42 @@ document.addEventListener("DOMContentLoaded", function () {
       }
     });
   });
+  function getUserData() {
+    const userData = localStorage.getItem("onellm_user");
+    return userData ? JSON.parse(userData) : null;
+  }
+
+  function updateAuthButtons() {
+    const userData = getUserData();
+    const authButtonsContainer = document.querySelector(".auth-buttons");
+
+    if (authButtonsContainer) {
+      authButtonsContainer.innerHTML = ""; // Clear existing buttons
+
+      if (userData) {
+        // User is logged in
+        const dashboardButton = document.createElement("a");
+        dashboardButton.href = "dashboard.html";
+        dashboardButton.className = "btn btn-primary";
+        dashboardButton.textContent = "Dashboard";
+        authButtonsContainer.appendChild(dashboardButton);
+      } else {
+        // User is not logged in
+        const loginButton = document.createElement("a");
+        loginButton.href = "login.html";
+        loginButton.className = "btn btn-outline";
+        loginButton.textContent = "Login";
+
+        const signupButton = document.createElement("a");
+        signupButton.href = "signup.html";
+        signupButton.className = "btn btn-primary";
+        signupButton.textContent = "Sign Up";
+
+        authButtonsContainer.appendChild(loginButton);
+        authButtonsContainer.appendChild(signupButton);
+      }
+    }
+  }
+
+  updateAuthButtons();
 });
-
-
