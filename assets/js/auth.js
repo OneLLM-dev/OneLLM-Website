@@ -5,34 +5,31 @@ async function login(email, password) {
     password: password,
   });
 
-  const response = await fetch("http://localhost:3000/get-backend?" + params.toString(), {
-    method: "GET",
-    headers: {
-      "Content-Type": "application/json",
-    }
-  });
+  const response = await fetch(
+    "http://localhost:3000/get-backend?" + params.toString(),
+    {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+      },
+    },
+  );
 
   if (!response.ok) {
     throw new Error(`Login failed: ${response.status}`);
   }
+  const data = await response.json();
 
-        console.log(response)
-
-        const data = await response.json();
-console.log("Login response data:", data);
-
- if (data.user) {
-  console.log("User email:", data.user.email);
-  console.log("Balance:", data.user.balance);
-  // Wrap user inside a similar structure
-  return {
-    email: data.user.email,
-    balance: data.user.balance,
-  };
-}else {
-  console.log("Login failed: No user found");
-  return null;
-}
+  if (data.user) {
+    // Wrap user inside a similar structure
+    return {
+      email: data.user.email,
+      password: password,
+      balance: data.user.balance,
+    };
+  } else {
+    return null;
+  }
 }
 async function signup(email, password) {
   const response = await fetch("http://localhost:3000/post-backend", {
@@ -54,26 +51,23 @@ async function signup(email, password) {
   }
 
   const data = await response.json();
-  console.log("Signup response data:", data);
-  console.log("User email:", data.email);
-  console.log("Balance:", data.balance);
   return data;
 }
 
 // Store user data in localStorage
 function storeUserData(userData) {
-  localStorage.setItem('onellm_user', JSON.stringify(userData));
+  localStorage.setItem("onellm_user", JSON.stringify(userData));
 }
 
 // Get user data from localStorage
 function getUserData() {
-  const userData = localStorage.getItem('onellm_user');
+  const userData = localStorage.getItem("onellm_user");
   return userData ? JSON.parse(userData) : null;
 }
 
 // Clear user data from localStorage (for logout)
 function clearUserData() {
-  localStorage.removeItem('onellm_user');
+  localStorage.removeItem("onellm_user");
 }
 
 // Check if user is logged in
@@ -86,13 +80,11 @@ document.addEventListener("DOMContentLoaded", () => {
   const signupForm = document.getElementById("signup-form");
   if (signupForm) {
     signupForm.addEventListener("submit", (e) => {
-      console.log("Signup was called");
       e.preventDefault();
       const email = e.target.email.value;
       const password = e.target.password.value;
       signup(email, password)
         .then((res) => {
-          console.log("Signup success:", res);
           window.location.href = "login.html"; // Redirect to dashboard
         })
         .catch((err) => {
@@ -130,7 +122,7 @@ document.addEventListener("DOMContentLoaded", () => {
         <span class="user-greeting">Hello, ${getUserData().email}</span>
         <button id="logout-btn" class="btn btn-outline">Logout</button>
       `;
-      
+
       // Add logout functionality
       document.getElementById("logout-btn").addEventListener("click", () => {
         clearUserData();
@@ -144,8 +136,8 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 // Initialize dashboard with user data
-function initDashboard() {
-        console.log("User data loaded from localStorage:", getUserData());
+async function initDashboard() {
+  console.log("User data loaded from localStorage:", getUserData());
   const dashboardContent = document.querySelector(".dashboard-content");
   if (!dashboardContent) return;
 
@@ -166,11 +158,25 @@ function initDashboard() {
   }
 
   // Update content section with user data
-const contentSection = document.querySelector(".content-section .container");
-const apiKeys = ["oa-12345678912345678900", "oa-12345678912345678900", "oa-12345678912345678900", "oa-12345678912345678900"]; // Replace this with actual fetch if needed
+  const contentSection = document.querySelector(".content-section .container");
+  const params = new URLSearchParams({
+    function: "APICount",
+    email: userData.email,
+    password: userData.password,
+  });
 
-if (contentSection) {
-  contentSection.innerHTML = `
+  const count = await callApiCommand({
+    functionType: "APICount",
+    email: userData.email,
+    password: userData.password,
+  });
+  console.log(count);
+  const count_num = count.data;
+  console.log(count_num);
+
+  const apiKeys = Array(parseInt(count_num)).fill("oa-12345678912345678900");
+  if (contentSection) {
+    contentSection.innerHTML = `
     <div class="stats-grid">
       <div class="stat-card">
         <div class="stat-title">Email</div>
@@ -183,7 +189,9 @@ if (contentSection) {
     </div>
   `;
 
-  contentSection.insertAdjacentHTML("beforeend", `
+    contentSection.insertAdjacentHTML(
+      "beforeend",
+      `
     <div class="api-key-section">
       <div class="api-key-header">
         <h2>Your API Keys</h2>
@@ -198,49 +206,57 @@ if (contentSection) {
           </tr>
         </thead>
         <tbody>
-          ${apiKeys.slice(0, 10).map((key, index) => `
+          ${
+        apiKeys.slice(0, 10).map((key, index) => `
             <tr>
               <td>${index + 1}</td>
               <td><code class="api-key-value">${key}</code></td>
             </tr>
-          `).join("")}
+          `).join("")
+      }
         </tbody>
       </table>
     </div>
-  `);
+  `,
+    );
 
-  // Event listener for Generate button
-  document.getElementById("generate-api-btn").addEventListener("click", async () => {
-    const result = await callApiCommand({
-      functionType: "NewAPI",
-      email: userData.email,
-      password: "wedFF1234"
-    });
-          console.log(result)
+    // Event listener for Generate button
+    document.getElementById("generate-api-btn").addEventListener(
+      "click",
+      async () => {
+        const result = await callApiCommand({
+          functionType: "NewAPI",
+          email: userData.email,
+          password: userData.password,
+        });
+        console.log(result);
 
-    if (result.type === "success") {
-      const tableBody = document.querySelector("#api-keys-table tbody");
-      const newIndex = tableBody.rows.length + 1;
-      const newKeyRow = `
+        if (result.type === "success") {
+          const tableBody = document.querySelector("#api-keys-table tbody");
+          const newIndex = tableBody.rows.length + 1;
+          const newKeyRow = `
         <tr>
           <td>${newIndex}</td>
           <td><code class="api-key-value">${result.data}</code></td>
         </tr>
       `;
-      tableBody.insertAdjacentHTML("beforeend", newKeyRow);
-    } else {
-      alert("Failed to generate API key: " + (result?.message || "Unknown error"));
-    }
-  });
-}
-    // Add copy functionality for API key
-    const copyBtn = contentSection.querySelector(".api-key-actions .btn");
-    if (copyBtn) {
-      copyBtn.addEventListener("click", () => {
-        const apiKey = userData.apikey || '';
-        navigator.clipboard.writeText(apiKey);
-        alert("API key copied to clipboard!");
-      });
-    }
-  
+          tableBody.insertAdjacentHTML("beforeend", newKeyRow);
+        } else {
+          alert(
+            "Failed to generate API key: " +
+              (result?.message || "Unknown error"),
+          );
+        }
+      },
+    );
+  }
+  // Add copy functionality for API key
+  const copyBtn = contentSection.querySelector(".api-key-actions .btn");
+  if (copyBtn) {
+    copyBtn.addEventListener("click", () => {
+      const apiKey = userData.apikey || "";
+      navigator.clipboard.writeText(apiKey);
+      alert("API key copied to clipboard!");
+    });
+  }
 }
