@@ -85,7 +85,7 @@ document.addEventListener("DOMContentLoaded", () => {
       const password = e.target.password.value;
       signup(email, password)
         .then((res) => {
-          window.location.href = "login.html"; // Redirect to dashboard
+          window.location.href = "/login/"; // Redirect to dashboard
         })
         .catch((err) => {
           console.error("Signup failed:", err);
@@ -105,7 +105,7 @@ document.addEventListener("DOMContentLoaded", () => {
         .then((res) => {
           console.log("Login success:", res);
           storeUserData(res); // Store user data
-          window.location.href = "dashboard.html"; // Redirect to dashboard
+          window.location.href = "/dashboard/"; // Redirect to dashboard
         })
         .catch((err) => {
           console.error("Login failed:", err);
@@ -144,7 +144,7 @@ async function initDashboard() {
   const userData = getUserData();
   if (!userData) {
     // Redirect to login if not logged in
-    window.location.href = "login.html";
+    window.location.href = "/login/";
     return;
   }
 
