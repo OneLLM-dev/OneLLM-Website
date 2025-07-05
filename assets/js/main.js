@@ -1,3 +1,8 @@
+function isLoggedIn() {
+  const userData = localStorage.getItem("onellm_user");
+  return !!userData;
+}
+
 document.addEventListener("DOMContentLoaded", function () {
   // Mobile menu toggle
   const mobileMenuToggle = document.querySelector(".mobile-menu-toggle");
@@ -31,6 +36,10 @@ document.addEventListener("DOMContentLoaded", function () {
     return userData ? JSON.parse(userData) : null;
   }
 
+  function isLoggedIn() {
+    return !!getUserData();
+  }
+
   function updateAuthButtons() {
     const userData = getUserData();
     const authButtonsContainer = document.querySelector(".auth-buttons");
@@ -41,19 +50,19 @@ document.addEventListener("DOMContentLoaded", function () {
       if (userData) {
         // User is logged in
         const dashboardButton = document.createElement("a");
-        dashboardButton.href = "dashboard.html";
+        dashboardButton.href = "/dashboard/";
         dashboardButton.className = "btn btn-primary";
         dashboardButton.textContent = "Dashboard";
         authButtonsContainer.appendChild(dashboardButton);
       } else {
         // User is not logged in
         const loginButton = document.createElement("a");
-        loginButton.href = "login.html";
+        loginButton.href = "/login/";
         loginButton.className = "btn btn-outline";
         loginButton.textContent = "Login";
 
         const signupButton = document.createElement("a");
-        signupButton.href = "signup.html";
+        signupButton.href = "/signup/";
         signupButton.className = "btn btn-primary";
         signupButton.textContent = "Sign Up";
 
