@@ -63,5 +63,30 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   }
 
+  function updateCTASection() {
+    const ctaContainer = document.getElementById("cta-container");
+    if (ctaContainer) {
+      if (!isLoggedIn()) {
+        ctaContainer.innerHTML = `
+          <section class="cta-section" id="cta-section">
+            <div class="container">
+              <div class="cta-card">
+                <h2>Ready to simplify your AI integration?</h2>
+                <p>
+                  Get started with OneLLM today and experience the power of unified AI
+                  access.
+                </p>
+                <a href="/signup/" class="btn btn-primary">Create Free Account</a>
+              </div>
+            </div>
+          </section>
+        `;
+      } else {
+        ctaContainer.innerHTML = "";
+      }
+    }
+  }
+
   updateAuthButtons();
+  updateCTASection();
 });
