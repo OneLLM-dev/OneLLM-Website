@@ -1,8 +1,3 @@
-function isLoggedIn() {
-  const userData = localStorage.getItem("onellm_user");
-  return !!userData;
-}
-
 document.addEventListener("DOMContentLoaded", function () {
   // Mobile menu toggle
   const mobileMenuToggle = document.querySelector(".mobile-menu-toggle");
@@ -96,6 +91,23 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   }
 
+  function handleCookieNotice() {
+    const cookieNotice = document.getElementById("cookie-notice");
+    const acceptCookiesButton = document.getElementById("accept-cookies");
+
+    const hasAcceptedCookies = localStorage.getItem("onellm_cookies_accepted");
+
+    if (!isLoggedIn() && !hasAcceptedCookies) {
+      cookieNotice.style.display = "flex";
+    }
+
+    acceptCookiesButton.addEventListener("click", function () {
+      cookieNotice.style.display = "none";
+      localStorage.setItem("onellm_cookies_accepted", "true");
+    });
+  }
+
   updateAuthButtons();
   updateCTASection();
+  handleCookieNotice();
 });
