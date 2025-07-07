@@ -20,6 +20,11 @@
   box-sizing: border-box;
 }
 
+#icon-logo {
+  max-height: 40px;
+  width: auto;
+}
+
 body {
   font-family: "Inter", "Segoe UI", system-ui, -apple-system, sans-serif;
   background-color: var(--body-bg);
@@ -49,10 +54,10 @@ nav {
 }
 
 .logo {
-  font-size: 1.5rem;
-  font-weight: 700;
-  color: var(--primary);
+  display: flex;
+  align-items: center;
   text-decoration: none;
+  color: var(--primary);
 }
 
 .nav-links {
