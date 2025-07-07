@@ -1,33 +1,34 @@
 async function login(email, password) {
-  const params = new URLSearchParams({
+  const url = "http://localhost:3000/post-backend";
+
+  const payload = {
     function: "Login",
-    email: email,
-    password: password,
+    email,
+    password,
+  };
+
+  const response = await fetch(url, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(payload),
   });
 
-  const response = await fetch(
-    "http://localhost:3000/get-backend?" + params.toString(),
-    {
-      method: "GET",
-      headers: {
-        "Content-Type": "application/json",
-      },
-    },
-  );
-
   if (!response.ok) {
-    console.log("Welcome to the error world of JS");
     throw new Error(`Login failed: ${response.status}`);
   }
+
   const data = await response.json();
 
-  if (data.user) {
+  if (data.User && data.User.user) {
     return {
-      email: data.user.email,
+      email: data.User.user.email,
       password: password,
-      balance: data.user.balance,
+      balance: data.User.user.balance,
     };
   } else {
+    console.error("Login failed or unexpected response:", data);
     return null;
   }
 }
