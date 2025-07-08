@@ -129,33 +129,32 @@
 }
 
 @media (max-width: 768px) {
-    .api-key-header, .usage-header {
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 10px;
-    }
+  .api-key-header, .usage-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+  }
 
-    .api-key-container {
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 10px;
-    }
+  .api-key-container {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+  }
 
-    .api-key-actions {
-        margin-top: 10px;
-    }
+  .api-key-actions {
+    margin-top: 10px;
+  }
 
-    .usage-filters {
-        flex-direction: column;
-        align-items: flex-start;
-        width: 100%;
-    }
+  .usage-filters {
+    flex-direction: column;
+    align-items: flex-start;
+    width: 100%;
+  }
 
-    .usage-filters .btn {
-        width: 100%;
-    }
+  .usage-filters .btn {
+    width: 100%;
+  }
 }
-
 
 /* Docs.css */
 @media (max-width: 992px) {
@@ -173,15 +172,15 @@
   }
 
   .docs-content {
-      padding: 20px;
+    padding: 20px;
   }
 }
 
 @media (max-width: 768px) {
-    .docs-section h1 {
-        font-size: 2rem;
-    }
-    .docs-section h2 {
-        font-size: 1.5rem;
-    }
+  .docs-section h1 {
+    font-size: 2rem;
+  }
+  .docs-section h2 {
+    font-size: 1.5rem;
+  }
 }
