@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Verify Email - OneLLM</title>
+    <link rel="icon" href="../assets/images/OneLLM-icon.png" type="image/png">
+
+    <link rel="stylesheet" href="../assets/css/main.css" />
+    <link rel="stylesheet" href="../assets/css/auth.css" />
+    <link rel="stylesheet" href="../assets/css/verify.css" />
+
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+  </head>
+  <body>
+    <header>
+      <div class="container">
+        <nav>
+          <a href="/" class="logo"><img id="icon-logo" src="../assets/images/OneLLM-icon.png">OneLLM</a>
+          <div class="nav-links">
+            <a href="/">Home</a>
+            <a href="https://github.com/OneLLM-dev/documentation"
+            >Documentation</a>
+            <a href="/pricing">Pricing</a>
+            <a href="/dashboard">Dashboard</a>
+          </div>
+        </nav>
+      </div>
+    </header>
+
+    <div class="container">
+      <div class="auth-container">
+        <div class="auth-header">
+          <h1>Verify Your Email</h1>
+          <p>Enter your email to receive a verification code.</p>
+        </div>
+
+        <form id="verify-email-form">
+          <div class="form-group">
+            <label for="email">Email</label>
+            <input type="email" id="email" class="form-control" required />
+          </div>
+          <button type="submit" class="btn btn-primary btn-block">
+            Send Code
+          </button>
+        </form>
+
+        <form id="verify-code-form" class="hidden">
+          <div class="form-group">
+            <label for="code">Verification Code</label>
+            <input type="text" id="code" class="form-control" required />
+          </div>
+          <button type="submit" class="btn btn-primary btn-block">
+            Verify
+          </button>
+        </form>
+      </div>
+    </div>
+
+    <footer>
+      <div class="container">
+        <div class="footer-content">
+          <div class="footer-brand">
+            <h3>OneLLM</h3>
+            <p>The unified API for all your AI needs</p>
+          </div>
+          <div class="footer-links">
+            <div class="footer-column">
+              <h4>Product</h4>
+              <a href="https://github.com/OneLLM-dev/documentation"
+              >Documentation</a>
+              <a href="/pricing">Pricing</a>
+            </div>
+            <div class="footer-column">
+              <h4>Legal</h4>
+              <a href="#">Terms</a>
+              <a href="#">Privacy</a>
+            </div>
+          </div>
+        </div>
+        <div class="footer-bottom"></div>
+      </div>
+    </footer>
+    <script src="/assets/js/verify.js"></script>
+  </body>
+</html>

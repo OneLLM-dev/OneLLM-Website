@@ -82,7 +82,7 @@ document.addEventListener("DOMContentLoaded", () => {
       const password = e.target.password.value;
       signup(email, password)
         .then(() => {
-          window.location.href = "/login/";
+          window.location.href = "/verify/";
         })
         .catch((err) => {
           console.error("Signup failed:", err);
