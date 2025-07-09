@@ -1,10 +1,10 @@
-async function callApiCommand({ functionType, email, password, name }) {
+async function callApiCommand({ functionType, email, token, name }) {
   const url = "http://localhost:3000/apikey-commands";
 
   const payload = {
     function: functionType,
+    token,
     email,
-    password,
     name,
   };
 
@@ -17,7 +17,10 @@ async function callApiCommand({ functionType, email, password, name }) {
       body: JSON.stringify(payload),
     });
 
+    console.log(payload);
+
     const text = await res.text();
+    console.log(text);
 
     if (!text) {
       console.error("Empty response from server");

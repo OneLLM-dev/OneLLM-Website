@@ -1,4 +1,4 @@
-async function login(email, password) {
+async function loginWoToken(email, password) {
   const url = "http://localhost:3000/post-backend";
 
   const payload = {
@@ -20,12 +20,47 @@ async function login(email, password) {
   }
 
   const data = await response.json();
+  console.log(data);
 
   if (data.User && data.User.user) {
     return {
       email: data.User.user.email,
-      password: password,
       balance: data.User.user.balance,
+      token: data.User.token,
+    };
+  } else {
+    console.error("Login failed or unexpected response:", data);
+    return null;
+  }
+}
+
+async function loginWithToken(token) {
+  const url = "http://localhost:3000/token-login";
+
+  const payload = {
+    function: "Login",
+    token,
+  };
+
+  const response = await fetch(url, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(payload),
+  });
+
+  if (!response.ok) {
+    throw new Error(`Login failed: ${response.status}`);
+  }
+
+  const data = await response.json();
+
+  if (data.User && data.User.user) {
+    return {
+      email: data.User.user.email,
+      balance: data.User.user.balance,
+      token: data.User.token,
     };
   } else {
     console.error("Login failed or unexpected response:", data);
@@ -44,7 +79,6 @@ async function signup(email, password) {
       email,
       password,
       apikey: "",
-      data: {},
     }),
   });
 
@@ -73,9 +107,32 @@ function isLoggedIn() {
   return !!getUserData();
 }
 
-document.addEventListener("DOMContentLoaded", () => {
+document.addEventListener("DOMContentLoaded", async () => {
+  console.log("DOMContentLoaded event fired in auth.js");
+
+  const userData = getUserData();
+  console.log("User data from localStorage:", userData);
+
+  if (userData && userData.token) {
+    console.log("Attempting login with token...");
+    try {
+      const res = await loginWithToken(userData.token);
+      if (res) {
+        storeUserData(res);
+        console.log("Login with token successful.");
+        //        window.location.href = "/dashboard/";
+        // return; // Removed return to allow initDashboard to be called
+      }
+    } catch (err) {
+      console.error("Login with token failed:", err);
+      clearUserData();
+    }
+  }
+
+  console.log("Checking for signup form...");
   const signupForm = document.getElementById("signup-form");
   if (signupForm) {
+    console.log("Signup form found. Attaching event listener.");
     signupForm.addEventListener("submit", (e) => {
       e.preventDefault();
       const email = e.target.email.value;
@@ -90,14 +147,16 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
+  console.log("Checking for login form...");
   const loginForm = document.getElementById("login-form");
   if (loginForm) {
+    console.log("Login form found. Attaching event listener.");
     loginForm.addEventListener("submit", (e) => {
       console.log("Login was called");
       e.preventDefault();
       const email = e.target.email.value;
       const password = e.target.password.value;
-      login(email, password)
+      loginWoToken(email, password)
         .then((res) => {
           console.log("Login success:", res);
           storeUserData(res);
@@ -109,9 +168,11 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
+  console.log("Checking for auth buttons...");
   const authButtons = document.querySelector(".auth-buttons");
   if (authButtons) {
     if (isLoggedIn()) {
+      console.log("User is logged in. Updating auth buttons.");
       authButtons.innerHTML = `
         <span class="user-greeting">Hello, ${getUserData().email}</span>
         <button id="logout-btn" class="btn btn-outline">Logout</button>
@@ -120,6 +181,8 @@ document.addEventListener("DOMContentLoaded", () => {
         clearUserData();
         window.location.href = "/";
       });
+    } else {
+      console.log("User is not logged in. Auth buttons will be handled by main.js or remain default.");
     }
   }
 
@@ -127,22 +190,25 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 async function initDashboard() {
-  const dashboardContent = document.querySelector(".dashboard-content");
-  if (!dashboardContent) return;
+  console.log("initDashboard() called.");
+  const dashboardcontent = document.querySelector(".dashboard-content");
+  if (!dashboardcontent) return;
 
   const userData = getUserData();
-  if (!userData) {
-    window.location.href = "/login/";
+  console.log(userData);
+
+  console.log("user data loaded from localstorage:", userData);
+
+  if (!userData || !userData.token) {
+    console.warn("No valid user data. Skipping dashboard init.");
     return;
   }
 
-  console.log("User data loaded from localStorage:", userData);
-
-  const pageHeader = document.querySelector(".page-header .container");
-  if (pageHeader) {
-    pageHeader.innerHTML = `
-      <h1>Welcome to Your Dashboard</h1>
-      <p>Manage your OneLLM account and API usage</p>
+  const pageheader = document.querySelector(".page-header .container");
+  if (pageheader) {
+    pageheader.innerHTML = `
+      <h1>Welcome to your dashboard</h1>
+      <p>manage your onellm account and api usage</p>
     `;
   }
 
@@ -151,7 +217,7 @@ async function initDashboard() {
   const countResult = await callApiCommand({
     functionType: "APICount",
     email: userData.email,
-    password: userData.password,
+    token: userData.token,
   });
 
   console.log(countResult);
@@ -215,7 +281,7 @@ async function initDashboard() {
         const result = await callApiCommand({
           functionType: "NewAPI",
           email: userData.email,
-          password: userData.password,
+          token: userData.token,
           name: keyName,
         });
 
@@ -247,7 +313,7 @@ async function initDashboard() {
             const deleteResult = await callApiCommand({
               functionType: "DelAPI",
               email: userData.email,
-              password: userData.password,
+              token: userData.token,
               name: name,
             });
 
@@ -282,7 +348,7 @@ async function initDashboard() {
         const result = await callApiCommand({
           functionType: "DelAPI",
           email: userData.email,
-          password: userData.password,
+          token: userData.token,
           name: name,
         });
 
