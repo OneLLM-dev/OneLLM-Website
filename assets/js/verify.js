@@ -1,3 +1,16 @@
+function getStoredToken() {
+  const userData = localStorage.getItem("onellm_user");
+  if (!userData) return null;
+
+  try {
+    const parsed = JSON.parse(userData);
+    return parsed.token || null;
+  } catch (e) {
+    console.error("Failed to parse local user data:", e);
+    return null;
+  }
+}
+
 document.addEventListener("DOMContentLoaded", () => {
   const verifyEmailForm = document.getElementById("verify-email-form");
   const verifyCodeForm = document.getElementById("verify-code-form");
@@ -33,10 +46,15 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   });
 
+  const token = getStoredToken();
+
   verifyCodeForm.addEventListener("submit", async (e) => {
     e.preventDefault();
+    let verify_target = "Email";
     const email = emailInput.value;
     const code = codeInput.value;
+
+    if (token) verify_target = "Token";
 
     try {
       const response = await fetch("/check-verify", {
@@ -44,14 +62,18 @@ document.addEventListener("DOMContentLoaded", () => {
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify({ email, code }),
+        body: JSON.stringify({ verify_target, email, code, token }),
       });
 
       const result = await response.json();
 
       if (result.Successful) {
-        alert("Email verified successfully!");
-        window.location.href = "/login";
+        if (verify_target == "Email") {
+          alert("Email verified successfully!");
+          window.location.href = "/login/";
+        } else {
+          window.location.href = "/dashboard/";
+        }
       } else {
         alert("Invalid verification code: " + result.Failure);
       }

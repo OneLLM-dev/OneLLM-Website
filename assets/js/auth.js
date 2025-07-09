@@ -108,13 +108,9 @@ function isLoggedIn() {
 }
 
 document.addEventListener("DOMContentLoaded", async () => {
-  console.log("DOMContentLoaded event fired in auth.js");
-
   const userData = getUserData();
-  console.log("User data from localStorage:", userData);
 
   if (userData && userData.token) {
-    console.log("Attempting login with token...");
     try {
       const res = await loginWithToken(userData.token);
       if (res) {
@@ -129,10 +125,8 @@ document.addEventListener("DOMContentLoaded", async () => {
     }
   }
 
-  console.log("Checking for signup form...");
   const signupForm = document.getElementById("signup-form");
   if (signupForm) {
-    console.log("Signup form found. Attaching event listener.");
     signupForm.addEventListener("submit", (e) => {
       e.preventDefault();
       const email = e.target.email.value;
@@ -147,10 +141,8 @@ document.addEventListener("DOMContentLoaded", async () => {
     });
   }
 
-  console.log("Checking for login form...");
   const loginForm = document.getElementById("login-form");
   if (loginForm) {
-    console.log("Login form found. Attaching event listener.");
     loginForm.addEventListener("submit", (e) => {
       console.log("Login was called");
       e.preventDefault();
@@ -168,7 +160,6 @@ document.addEventListener("DOMContentLoaded", async () => {
     });
   }
 
-  console.log("Checking for auth buttons...");
   const authButtons = document.querySelector(".auth-buttons");
   if (authButtons) {
     if (isLoggedIn()) {
@@ -181,8 +172,6 @@ document.addEventListener("DOMContentLoaded", async () => {
         clearUserData();
         window.location.href = "/";
       });
-    } else {
-      console.log("User is not logged in. Auth buttons will be handled by main.js or remain default.");
     }
   }
 
@@ -190,14 +179,10 @@ document.addEventListener("DOMContentLoaded", async () => {
 });
 
 async function initDashboard() {
-  console.log("initDashboard() called.");
   const dashboardcontent = document.querySelector(".dashboard-content");
   if (!dashboardcontent) return;
 
   const userData = getUserData();
-  console.log(userData);
-
-  console.log("user data loaded from localstorage:", userData);
 
   if (!userData || !userData.token) {
     console.warn("No valid user data. Skipping dashboard init.");
