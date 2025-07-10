@@ -1,5 +1,5 @@
 async function callApiCommand({ functionType, email, token, name }) {
-  const url = "http://localhost:3000/apikey-commands";
+  const url = "/apikey-commands";
 
   const payload = {
     function: functionType,

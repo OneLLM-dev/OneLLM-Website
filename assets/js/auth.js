@@ -1,5 +1,5 @@
 async function loginWoToken(email, password) {
-  const url = "http://localhost:3000/post-backend";
+  const url = "/post-backend";
 
   const payload = {
     function: "Login",
@@ -35,7 +35,7 @@ async function loginWoToken(email, password) {
 }
 
 async function loginWithToken(token) {
-  const url = "http://localhost:3000/token-login";
+  const url = "/token-login";
 
   const payload = {
     function: "Login",
@@ -69,7 +69,7 @@ async function loginWithToken(token) {
 }
 
 async function signup(email, password) {
-  const response = await fetch("http://localhost:3000/post-backend", {
+  const response = await fetch("/post-backend", {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
