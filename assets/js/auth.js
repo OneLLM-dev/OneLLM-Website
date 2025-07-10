@@ -116,8 +116,6 @@ document.addEventListener("DOMContentLoaded", async () => {
       if (res) {
         storeUserData(res);
         console.log("Login with token successful.");
-        window.location.href = "/dashboard/";
-        return; // Removed return to allow initDashboard to be called
       }
     } catch (err) {
       console.error("Login with token failed:", err);
@@ -148,6 +146,7 @@ document.addEventListener("DOMContentLoaded", async () => {
       e.preventDefault();
       const email = e.target.email.value;
       const password = e.target.password.value;
+
       loginWoToken(email, password)
         .then((res) => {
           console.log("Login success:", res);
