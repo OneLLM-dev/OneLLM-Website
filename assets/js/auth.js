@@ -116,8 +116,8 @@ document.addEventListener("DOMContentLoaded", async () => {
       if (res) {
         storeUserData(res);
         console.log("Login with token successful.");
-        //        window.location.href = "/dashboard/";
-        // return; // Removed return to allow initDashboard to be called
+        window.location.href = "/dashboard/";
+        return; // Removed return to allow initDashboard to be called
       }
     } catch (err) {
       console.error("Login with token failed:", err);
@@ -192,8 +192,8 @@ async function initDashboard() {
   const pageheader = document.querySelector(".page-header .container");
   if (pageheader) {
     pageheader.innerHTML = `
-      <h1>Welcome to your dashboard</h1>
-      <p>manage your onellm account and api usage</p>
+      <h1>Welcome to your Dashboard</h1>
+      <p>Manage your OneLLM account and API usage</p>
     `;
   }
 
