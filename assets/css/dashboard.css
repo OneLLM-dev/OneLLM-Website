@@ -91,10 +91,21 @@
 .stat-card {
   background-color: white;
   border-radius: var(--border-radius);
-  padding: 25px;
-  box-shadow: var(--shadow-sm);
+  padding: 30px;
+  box-shadow: var(--shadow-md);
   min-width: 20%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  transition: all 0.3s ease;
+  border: 1px solid var(--light);
 }
+
+.stat-card:hover {
+  transform: translateY(-5px);
+  box-shadow: var(--shadow-lg);
+}
+
 
 .stat-card .stat-title {
   font-size: 0.9rem;
@@ -102,10 +113,9 @@
   margin-bottom: 5px;
 }
 
-.stat-card .stat-value {
-  font-size: 1.3rem;
-  font-weight: 700;
-  margin-bottom: 0;
+.stat-card .btn-purchase {
+  margin-top: 15px;
+  width: 100%;
 }
 
 .stat-card .stat-change {

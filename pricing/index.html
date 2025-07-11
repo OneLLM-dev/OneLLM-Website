@@ -41,19 +41,22 @@
           Access all leading AI models through our unified API with simple,
           predictable pricing
         </p>
-        <h2>Purchase balance:</h2>
+      </div>
+    </section>
 
-
-<stripe-buy-button
-  buy-button-id="buy_btn_1Rja5HIZCl3mWU5CniFcvd6m"
-  publishable-key="pk_live_51O6nOSIZCl3mWU5C9Dk8P6i1fGn6ADg7S9pYF7EP9gMy3hpwA0NZNw4IbbzznGS9FAWnkfK2E7NFrJpcQdWcqy7x00b6phVkBu"
->
-</stripe-buy-button>
+    <section class="purchase-section">
+      <div class="container">
+        
       </div>
     </section>
 
     <section class="content-section">
       <div class="container">
+        <div class="view-toggle">
+          <button id="view-by-provider" class="btn btn-primary">View by Provider</button>
+          <button id="view-by-cost" class="btn btn-outline">View by Cost</button>
+        </div>
+        <div id="pricing-views">
         <div class="provider-section">
           <div class="provider-header">
             <div class="provider-icon"><i class="fas fa-robot"></i></div>
@@ -281,8 +284,9 @@
         <div class="footer-bottom"></div>
       </div>
     </footer>
-    <script async src="https://js.stripe.com/v3/buy-button.js"></script>
+    
 
     <script src="/assets/js/main.js"></script>
+    <script src="/assets/js/pricing.js"></script>
   </body>
 </html>

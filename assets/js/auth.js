@@ -218,6 +218,7 @@ async function initDashboard() {
         <div class="stat-card">
           <div class="stat-title">Balance</div>
           <div class="stat-value">${userData.balance || 0}</div>
+          <a href="https://buy.stripe.com/bJe6oI2eL1e50in1lQbsc01" class="btn btn-primary btn-purchase">Purchase Balance</a>
         </div>
       </div>
 

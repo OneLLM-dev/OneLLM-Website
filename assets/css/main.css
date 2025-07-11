@@ -307,3 +307,63 @@ footer {
   margin-left: auto;
   flex-shrink: 0;
 }
+
+.comparison-section {
+    padding: 60px 0;
+}
+
+.comparison-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 40px;
+    background-color: white;
+    box-shadow: var(--shadow);
+    border-radius: var(--border-radius);
+    overflow: hidden;
+}
+
+.comparison-table th,
+.comparison-table td {
+    padding: 20px;
+    text-align: center;
+    border-bottom: 1px solid #eee;
+}
+
+.comparison-table th {
+    background-color: var(--light);
+    font-weight: 600;
+}
+
+.comparison-table td:first-child {
+    font-weight: 500;
+}
+
+.comparison-table .check i {
+    color: var(--success);
+    font-size: 1.5rem;
+}
+
+.comparison-table .cross i {
+    color: var(--danger);
+    font-size: 1.5rem;
+}
+
+
+.comparison-table .highlight {
+  font-weight: 900; /* Bolder font */
+}
+
+.comparison-table .highlight td {
+  background-color: rgba(67, 97, 238, 0.1);
+  border-top: 2px solid var(--primary);
+  border-bottom: 2px solid var(--primary);
+}
+
+.comparison-table .highlight td:first-child {
+  border-left: 2px solid var(--primary);
+  color: var(--primary); /* Color for the provider name */
+}
+
+.comparison-table .highlight td:last-child {
+  border-right: 2px solid var(--primary);
+}
