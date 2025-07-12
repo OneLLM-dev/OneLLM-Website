@@ -30,18 +30,20 @@ document.addEventListener("DOMContentLoaded", function () {
   // Page transition logic
   const body = document.body;
   // Ensure body is visible by default, transition only on navigation
-  body.classList.remove('page-transition-out');
-  body.classList.add('page-transition-in');
+  body.classList.remove("page-transition-out");
+  body.classList.add("page-transition-in");
 
   // Add event listener for all internal links to trigger page-out transition
-  document.querySelectorAll('a[href^="/"]:not([href^="#"]):not([target="_blank"])').forEach(link => {
-    link.addEventListener('click', function(e) {
-      const href = this.getAttribute('href');
+  document.querySelectorAll(
+    'a[href^="/"]:not([href^="#"]):not([target="_blank"])',
+  ).forEach((link) => {
+    link.addEventListener("click", function (e) {
+      const href = this.getAttribute("href");
       // Only apply transition if the link is to a different page within the site
       if (href && href !== window.location.pathname) {
         e.preventDefault();
-        body.classList.remove('page-transition-in');
-        body.classList.add('page-transition-out');
+        body.classList.remove("page-transition-in");
+        body.classList.add("page-transition-out");
         setTimeout(() => {
           window.location.href = href;
         }, 500); // Match CSS transition duration
@@ -50,15 +52,15 @@ document.addEventListener("DOMContentLoaded", function () {
   });
 
   // Apply fade-in-slide-up to headings and paragraphs
-  document.querySelectorAll('h1, h2, h3, p').forEach((element) => {
-    if (!element.closest('footer') && !element.closest('#cookie-notice')) { // Exclude footer and cookie notice
-      element.classList.add('fade-in-slide-up');
+  document.querySelectorAll("h1, h2, h3, p").forEach((element) => {
+    if (!element.closest("footer") && !element.closest("#cookie-notice")) { // Exclude footer and cookie notice
+      element.classList.add("fade-in-slide-up");
     }
   });
 
   // Apply fade-in to images
-  document.querySelectorAll('img').forEach((element) => {
-    element.classList.add('fade-in-image');
+  document.querySelectorAll("img").forEach((element) => {
+    element.classList.add("fade-in-image");
   });
 
   function getUserData() {
