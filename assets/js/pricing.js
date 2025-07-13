@@ -2,6 +2,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const viewByProviderBtn = document.getElementById("view-by-provider");
   const viewByCostBtn = document.getElementById("view-by-cost");
   const providerSections = document.querySelectorAll(".provider-section");
+  const pricingViews = document.getElementById("pricing-views");
 
   const costSections = document.createElement("div");
   costSections.id = "cost-sections";
@@ -18,13 +19,8 @@ document.addEventListener("DOMContentLoaded", () => {
     pricingCards.forEach((card) => {
       const priceText = card.querySelector(".price").textContent;
       const price = parseFloat(priceText.replace(/[^0-9.-]+/g, ""));
-      const modelName = card.querySelector(".model-name").textContent;
-      const description = card.querySelector("p").textContent;
-
       const cardData = {
         price,
-        modelName,
-        description,
         element: card.cloneNode(true),
       };
 
@@ -37,6 +33,11 @@ document.addEventListener("DOMContentLoaded", () => {
       }
     });
   });
+
+  // Sort each tier by price
+  for (const tier in pricingData) {
+    pricingData[tier].sort((a, b) => a.price - b.price);
+  }
 
   const createCostSection = (title, models) => {
     const section = document.createElement("div");
@@ -70,20 +71,19 @@ document.addEventListener("DOMContentLoaded", () => {
   };
 
   costSections.appendChild(
-    createCostSection("Affordable Models", pricingData.affordable),
+    createCostSection("Affordable Models (< $5)", pricingData.affordable)
   );
   costSections.appendChild(
-    createCostSection("Intermediate Models", pricingData.intermediate),
+    createCostSection("Intermediate Models ($5 - $20)", pricingData.intermediate)
   );
   costSections.appendChild(
-    createCostSection("Advanced Models", pricingData.advanced),
+    createCostSection("Advanced Models (> $20)", pricingData.advanced)
   );
 
-  const contentSection = document.getElementById("pricing-views");
-  contentSection.appendChild(costSections);
+  pricingViews.appendChild(costSections);
 
   viewByProviderBtn.addEventListener("click", () => {
-    providerSections.forEach((section) => section.style.display = "block");
+    providerSections.forEach((section) => (section.style.display = "block"));
     costSections.style.display = "none";
     viewByProviderBtn.classList.add("btn-primary");
     viewByProviderBtn.classList.remove("btn-outline");
@@ -92,7 +92,7 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 
   viewByCostBtn.addEventListener("click", () => {
-    providerSections.forEach((section) => section.style.display = "none");
+    providerSections.forEach((section) => (section.style.display = "none"));
     costSections.style.display = "block";
     viewByCostBtn.classList.add("btn-primary");
     viewByCostBtn.classList.remove("btn-outline");
