@@ -147,4 +147,26 @@ document.addEventListener("DOMContentLoaded", function () {
   updateAuthButtons();
   updateCTASection();
   handleCookieNotice();
+
+  const communityButton = document.getElementById("community-button");
+  const communityModal = document.getElementById("community-modal");
+  const closeButton = document.querySelector(".close-button");
+
+  if (communityButton) {
+    communityButton.addEventListener("click", () => {
+      communityModal.style.display = "block";
+    });
+  }
+
+  if (closeButton) {
+    closeButton.addEventListener("click", () => {
+      communityModal.style.display = "none";
+    });
+  }
+
+  window.addEventListener("click", (event) => {
+    if (event.target == communityModal) {
+      communityModal.style.display = "none";
+    }
+  });
 });
