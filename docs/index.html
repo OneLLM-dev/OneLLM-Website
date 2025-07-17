@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>OneLLM API Documentation</title>
+    <link rel="stylesheet" href="../assets/css/main.css" />
+    <link rel="stylesheet" href="../assets/css/docs.css" />
+  </head>
+  <body>
+    <header>
+      <div class="container">
+        <nav>
+          <a href="/" class="logo"><img
+              id="icon-logo"
+              src="/assets/images/OneLLM-icon.png"
+              class="fade-in-image"
+            >OneLLM</a>
+          <div class="nav-links">
+            <a href="/">Home</a>
+            <a href="/docs/">Documentation</a>
+            <a href="/pricing/">Pricing</a>
+            <a href="/dashboard/">Dashboard</a>
+          </div>
+          <div class="auth-buttons"></div>
+        </nav>
+      </div>
+    </header>
+
+    <main class="container docs-container">
+      <aside class="docs-sidebar">
+        <div class="sidebar-section">
+          <h3>Getting Started</h3>
+          <ul>
+            <li><a href="#authentication">Authentication</a></li>
+            <li><a href="#api-endpoint">API Endpoint</a></li>
+          </ul>
+        </div>
+        <div class="sidebar-section">
+          <h3>References</h3>
+          <ul>
+            <li><a href="#supported-models">Supported Models</a></li>
+            <li><a href="#important-notes">Important Notes</a></li>
+          </ul>
+        </div>
+      </aside>
+      <article class="docs-content">
+        <h1>OneLLM.dev API Documentation</h1>
+
+        <p>
+          Welcome to the official API documentation for OneLLM.dev. This
+          document provides a comprehensive guide to interacting with our API.
+          For a formal definition of the API, please refer to the
+          <a
+            href="https://github.com/OneLLM-dev/documentation/blob/main/openapi.yaml"
+          >OpenAPI Specification</a>.
+        </p>
+
+        <section id="authentication" class="docs-section">
+          <h2>Authentication</h2>
+          <p>
+            The OneLLM.dev API uses API keys for authentication. You can obtain
+            your API key from the
+            <a href="https://onellm.dev">OneLLM.dev dashboard</a>.
+          </p>
+          <p>
+            All API requests must include an
+            <code>Authorization</code> header with a Bearer token containing
+            your API key.
+          </p>
+          <pre
+          ><code class="language-http">Authorization: Bearer YOUR_API_KEY</code></pre>
+        </section>
+
+        <section id="api-endpoint" class="docs-section">
+          <h2>API Endpoint</h2>
+          <p><strong>Do note that streaming is not supported</strong></p>
+          <h3><code>POST /v1/chat/completions</code></h3>
+          <p>
+            This is the primary endpoint for interacting with the language
+            models. It allows you to send a chat conversation and receive a
+            response from the specified model.
+          </p>
+
+          <h4>Request Body</h4>
+          <p>
+            The request body must be a JSON object containing the details of
+            your request.
+          </p>
+          <div class="endpoint-table">
+            <table>
+              <thead>
+                <tr>
+                  <th>Parameter</th>
+                  <th>Type</th>
+                  <th>Description</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><code>model</code></td>
+                  <td>string</td>
+                  <td>
+                    <strong>Required.</strong> The ID of the model to use for
+                    the completion. See the
+                    <a href="#supported-models">Supported Models</a> section for
+                    a list of available models.
+                  </td>
+                </tr>
+                <tr>
+                  <td><code>messages</code></td>
+                  <td>array</td>
+                  <td>
+                    <strong>Required.</strong> An array of message objects
+                    representing the conversation history.
+                  </td>
+                </tr>
+                <tr>
+                  <td><code>temperature</code></td>
+                  <td>number</td>
+                  <td>
+                    Optional. Controls randomness. A lower value makes the model
+                    more deterministic. Range: 0.0 to 2.0.
+                  </td>
+                </tr>
+                <tr>
+                  <td><code>max_tokens</code></td>
+                  <td>integer</td>
+                  <td>
+                    Optional. The maximum number of tokens to generate in the
+                    response. If the value is too large, it will be
+                    automatically adjusted based on your account balance.
+                  </td>
+                </tr>
+                <tr>
+                  <td><code>stream</code></td>
+                  <td>boolean</td>
+                  <td>
+                    Optional. If set to <code>true</code>, the response will be
+                    streamed as server-sent events. Defaults to <code
+                    >false</code>.
+                  </td>
+                </tr>
+                <tr>
+                  <td><code>top_p</code></td>
+                  <td>number</td>
+                  <td>
+                    Optional. The nucleus sampling probability. The model
+                    considers the results of the tokens with <code>top_p</code>
+                    probability mass.
+                  </td>
+                </tr>
+                <tr>
+                  <td><code>stop_sequences</code></td>
+                  <td>array</td>
+                  <td>
+                    Optional. A list of strings that will cause the model to
+                    stop generating tokens.
+                  </td>
+                </tr>
+                <tr>
+                  <td><code>...and more</code></td>
+                  <td></td>
+                  <td>
+                    For a complete list of all possible request parameters,
+                    please refer to the
+                    <a
+                      href="https://github.com/OneLLM-dev/documentation/blob/main/openapi.yaml"
+                    >OpenAPI Specification</a>.
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <h4>Example Request:</h4>
+          <pre
+          >
+<code class="language-json">{
+  "model": "GPT-4.1",
+  "messages": [
+    {
+      "role": "user",
+      "content": "Tell me a joke about computers."
+    }
+  ],
+  "max_tokens": 50
+}</code></pre>
+
+          <h4>Response Body</h4>
+          <p>
+            The response will be a JSON object containing the model's output.
+          </p>
+          <div class="endpoint-table">
+            <table>
+              <thead>
+                <tr>
+                  <th>Parameter</th>
+                  <th>Type</th>
+                  <th>Description</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><code>provider</code></td>
+                  <td>string</td>
+                  <td>
+                    The name of the underlying model provider (e.g., `openai`).
+                  </td>
+                </tr>
+                <tr>
+                  <td><code>model</code></td>
+                  <td>string</td>
+                  <td>The model that was used for the completion.</td>
+                </tr>
+                <tr>
+                  <td><code>role</code></td>
+                  <td>string</td>
+                  <td>
+                    The role of the message author, typically `assistant`.
+                  </td>
+                </tr>
+                <tr>
+                  <td><code>content</code></td>
+                  <td>string</td>
+                  <td>The content of the message generated by the model.</td>
+                </tr>
+                <tr>
+                  <td><code>usage</code></td>
+                  <td>object</td>
+                  <td>
+                    An object containing token usage information for the
+                    request.
+                  </td>
+                </tr>
+                <tr>
+                  <td><code>finish_reason</code></td>
+                  <td>string</td>
+                  <td>
+                    The reason the model stopped generating tokens (e.g.,
+                    `stop`).
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <h4>Example Response:</h4>
+          <pre
+          >
+<code class="language-json">{
+  "provider": "openai",
+  "model": "GPT-4.1",
+  "role": "assistant",
+  "content": "Why did the computer show up at work late? It had a hard drive!",
+  "usage": {
+    "input_tokens": 15,
+    "output_tokens": 12,
+    "total_tokens": 27
+  },
+  "finish_reason": "stop"
+}</code></pre>
+        </section>
+
+        <section id="supported-models" class="docs-section">
+          <h2>Supported Models</h2>
+          <p>
+            The following models are supported and can be used in the
+            <code>model</code> parameter of your API requests:
+          </p>
+          <ul>
+            <li><code>GPT-4.1</code></li>
+            <li><code>GPT-4.1-Mini</code></li>
+            <li><code>GPT-4.1-Nano</code></li>
+            <li><code>GPT-o3</code></li>
+            <li><code>GPT-o3-pro</code></li>
+            <li><code>GPT-o3-DeepResearch</code></li>
+            <li><code>GPT-o3-Mini</code></li>
+            <li><code>GPT-o4-mini</code></li>
+            <li><code>GPT-4o</code></li>
+            <li><code>GPT-4o-mini</code></li>
+            <li><code>GPT-o1</code></li>
+            <li><code>GPT-o1-Mini</code></li>
+            <li><code>Opus-4</code></li>
+            <li><code>Sonnet-4</code></li>
+            <li><code>Haiku-3.5</code></li>
+            <li><code>Opus-3</code></li>
+            <li><code>Sonnet-3.7</code></li>
+            <li><code>Haiku-3</code></li>
+            <li><code>DeepSeek-Reasoner</code></li>
+            <li><code>DeepSeek-Chat</code></li>
+            <li><code>2.5-Flash-preview</code></li>
+            <li><code>2.5-Pro-preview</code></li>
+            <li><code>2.0-Flash</code></li>
+            <li><code>2.0-Flash-lite</code></li>
+            <li><code>1.5-Flash</code></li>
+            <li><code>1.5-Flash-8B</code></li>
+            <li><code>1.5-Pro</code></li>
+            <li><code>Mistral-Medium-3</code></li>
+            <li><code>Magistral-Medium</code></li>
+            <li><code>Codestral</code></li>
+            <li><code>Devstral-Medium</code></li>
+            <li><code>Mistral-Saba</code></li>
+            <li><code>Mistral-Large</code></li>
+            <li><code>Pixtral-Large</code></li>
+            <li><code>Ministral-8B-24.10</code></li>
+            <li><code>Ministral-3B-24.10</code></li>
+            <li><code>Mistral-Small-3.2</code></li>
+            <li><code>Magistral-Small</code></li>
+            <li><code>Devstral-Small</code></li>
+            <li><code>Pixtral-12B</code></li>
+            <li><code>Mistral-NeMo</code></li>
+            <li><code>Mistral-7B</code></li>
+            <li><code>Mixtral-8x7B</code></li>
+            <li><code>Mixtral-8x22B</code></li>
+          </ul>
+        </section>
+
+        <section id="important-notes" class="docs-section">
+          <h2>Important Notes</h2>
+          <ul>
+            <li>
+              If the <code>max_tokens</code> field's value is too large, the
+              server will automatically set it to the highest amount that your
+              balance allows.
+            </li>
+            <li>
+              A minimum balance of <strong>USD $0.10</strong> is required to
+              make API requests.
+            </li>
+          </ul>
+        </section>
+      </article>
+    </main>
+
+    <footer>
+      <div class="container">
+        <div class="footer-content">
+          <div class="footer-brand">
+            <h3>OneLLM</h3>
+            <p>The unified API for all your AI needs</p>
+          </div>
+          <div class="footer-links">
+            <div class="footer-column">
+              <h4>Product</h4>
+              <a href="https://github.com/OneLLM-dev/documentation"
+              >Documentation</a>
+              <a href="/pricing/">Pricing</a>
+            </div>
+            <div class="footer-column">
+              <h4>Legal</h4>
+              <a href="/TOS/">Terms</a>
+              <a href="/privacypolicy/">Privacy</a>
+            </div>
+          </div>
+        </div>
+        <div class="footer-bottom"></div>
+      </div>
+    </footer>
+    <div id="cookie-notice">
+      <p>
+        This website uses only necessary cookies to ensure basic functionality.
+        By using this site, you consent to our use of cookies.
+      </p>
+      <button id="accept-cookies" class="btn btn-primary">Accept</button>
+    </div>
+  </body>
+</html>

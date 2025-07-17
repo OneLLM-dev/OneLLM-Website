@@ -71,13 +71,16 @@ document.addEventListener("DOMContentLoaded", () => {
   };
 
   costSections.appendChild(
-    createCostSection("Affordable Models (< $5)", pricingData.affordable)
+    createCostSection("Affordable Models (< $5)", pricingData.affordable),
   );
   costSections.appendChild(
-    createCostSection("Intermediate Models ($5 - $20)", pricingData.intermediate)
+    createCostSection(
+      "Intermediate Models ($5 - $20)",
+      pricingData.intermediate,
+    ),
   );
   costSections.appendChild(
-    createCostSection("Advanced Models (> $20)", pricingData.advanced)
+    createCostSection("Advanced Models (> $20)", pricingData.advanced),
   );
 
   pricingViews.appendChild(costSections);
