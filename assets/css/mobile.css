@@ -2,185 +2,231 @@
 
 /* General */
 @media (max-width: 768px) {
-  h1 {
-    font-size: 2.5rem;
-  }
+    h1 {
+        font-size: 2.5rem;
+    }
 
-  h2 {
-    font-size: 2rem;
-  }
+    h2 {
+        font-size: 2rem;
+    }
 
-  section {
-    padding: 20px 0;
-  }
+    section {
+        padding: 20px 0;
+    }
 
-  .container {
-    padding: 0 15px;
-  }
+    .container {
+        padding: 0 15px;
+    }
 }
 
 /* Main.css */
 @media (max-width: 768px) {
-  .nav-links {
-    display: none;
-    flex-direction: column;
-    position: absolute;
-    top: 70px;
-    left: 0;
-    width: 100%;
-    background-color: white;
-    box-shadow: var(--shadow);
-    padding: 20px;
-    gap: 15px;
-  }
+    .nav-links {
+        display: none;
+        flex-direction: column;
+        position: absolute;
+        top: 70px;
+        left: 0;
+        width: 100%;
+        background-color: white;
+        box-shadow: var(--shadow);
+        padding: 20px;
+        gap: 15px;
+    }
 
-  .nav-links.active {
-    display: flex;
-  }
+    .nav-links.active {
+        display: flex;
+    }
 
-  .auth-buttons {
-    display: none;
-  }
+    .auth-buttons {
+        display: none;
+    }
 
-  .mobile-menu-button {
-    display: block;
-    background: none;
-    border: none;
-    font-size: 24px;
-    cursor: pointer;
-    color: var(--dark);
-  }
+    .mobile-menu-button {
+        display: block;
+        background: none;
+        border: none;
+        font-size: 24px;
+        cursor: pointer;
+        color: var(--dark);
+    }
 
-  .hero {
-    flex-direction: column;
-    text-align: center;
-    padding: 40px 0;
-    min-height: auto;
-  }
+    .hero {
+        flex-direction: column;
+        text-align: center;
+        padding: 40px 0;
+        min-height: auto;
+    }
 
-  .hero-buttons {
-    justify-content: center;
-  }
+    .hero-visual {
+        display: none;
+    }
 
-  .features, .providers {
-    grid-template-columns: 1fr;
-  }
+    .hero-stats {
+        gap: 20px;
+        justify-content: center;
+        margin-bottom: 32px;
+    }
 
-  .footer-content, .footer-links {
-    flex-direction: column;
-    text-align: center;
-  }
+    .stat-number {
+        font-size: 1.5rem;
+    }
 
-  #cookie-notice {
-    flex-direction: column;
-    text-align: center;
-    gap: 15px;
-  }
+    .hero-description {
+        font-size: 1.1rem;
+    }
+
+    .hero-buttons {
+        justify-content: center;
+        gap: 16px;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .btn-lg {
+        width: 100%;
+        max-width: 280px;
+    }
+
+    .hero-badge {
+        margin-bottom: 20px;
+    }
+
+    .features,
+    .providers {
+        grid-template-columns: 1fr;
+    }
+
+    .footer-content,
+    .footer-links {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    #cookie-notice {
+        flex-direction: column;
+        text-align: center;
+        gap: 15px;
+    }
+
+    .hero-trust {
+        margin-top: 20px;
+    }
+
+    .trust-text {
+        font-size: 0.85rem;
+    }
+
+    .trust-text::before,
+    .trust-text::after {
+        width: 12px;
+    }
 }
 
 /* Auth.css */
 @media (max-width: 480px) {
-  .auth-container {
-    margin: 20px auto;
-    padding: 20px;
-    box-shadow: none;
-    border: none;
-  }
+    .auth-container {
+        margin: 20px auto;
+        padding: 20px;
+        box-shadow: none;
+        border: none;
+    }
 }
 
 /* Dashboard.css */
 @media (max-width: 992px) {
-  .dashboard-container {
-    flex-direction: column;
-  }
+    .dashboard-container {
+        flex-direction: column;
+    }
 
-  .dashboard-sidebar {
-    width: 100%;
-    height: auto;
-    position: static;
-    top: 0;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-    display: flex;
-    justify-content: space-around; /* Or any other layout */
-    padding: 10px 0;
-  }
+    .dashboard-sidebar {
+        width: 100%;
+        height: auto;
+        position: static;
+        top: 0;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        display: flex;
+        justify-content: space-around; /* Or any other layout */
+        padding: 10px 0;
+    }
 
-  .dashboard-sidebar-header {
-    display: none; /* Hide header on mobile */
-  }
+    .dashboard-sidebar-header {
+        display: none; /* Hide header on mobile */
+    }
 
-  .sidebar-menu {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-  }
+    .sidebar-menu {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
 
-  .sidebar-menu a {
-    padding: 10px 15px;
-  }
+    .sidebar-menu a {
+        padding: 10px 15px;
+    }
 
-  .stats-grid {
-    flex-direction: column;
-  }
+    .stats-grid {
+        flex-direction: column;
+    }
 
-  .dashboard-content {
-    padding: 20px;
-  }
+    .dashboard-content {
+        padding: 20px;
+    }
 }
 
 @media (max-width: 768px) {
-  .api-key-header, .usage-header {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 10px;
-  }
+    .api-key-header,
+    .usage-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
+    }
 
-  .api-key-container {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 10px;
-  }
+    .api-key-container {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
+    }
 
-  .api-key-actions {
-    margin-top: 10px;
-  }
+    .api-key-actions {
+        margin-top: 10px;
+    }
 
-  .usage-filters {
-    flex-direction: column;
-    align-items: flex-start;
-    width: 100%;
-  }
+    .usage-filters {
+        flex-direction: column;
+        align-items: flex-start;
+        width: 100%;
+    }
 
-  .usage-filters .btn {
-    width: 100%;
-  }
+    .usage-filters .btn {
+        width: 100%;
+    }
 }
 
 /* Docs.css */
 @media (max-width: 992px) {
-  .docs-container {
-    flex-direction: column;
-  }
+    .docs-container {
+        flex-direction: column;
+    }
 
-  .docs-sidebar {
-    width: 100%;
-    height: auto;
-    position: static;
-    border-right: none;
-    border-bottom: 1px solid #e9ecef;
-    top: 0;
-  }
+    .docs-sidebar {
+        width: 100%;
+        height: auto;
+        position: static;
+        border-right: none;
+        border-bottom: 1px solid #e9ecef;
+        top: 0;
+    }
 
-  .docs-content {
-    padding: 20px;
-  }
+    .docs-content {
+        padding: 20px;
+    }
 }
 
 @media (max-width: 768px) {
-  .docs-section h1 {
-    font-size: 2rem;
-  }
-  .docs-section h2 {
-    font-size: 1.5rem;
-  }
+    .docs-section h1 {
+        font-size: 2rem;
+    }
+    .docs-section h2 {
+        font-size: 1.5rem;
+    }
 }
