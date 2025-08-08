@@ -1,340 +1,330 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>OneLLM - Universal AI API Platform</title>
-        <meta
-            name="description"
-            content="OneLLM offers a single, unified API to access top AI models like ChatGPT, Claude, and DeepSeek, with support for Gemini and more coming soon. Simplify your AI integration with our cheaper, more efficient alternative to OpenRouter. Get started with one library."
-        />
-        <meta
-            name="keywords"
-            content="unified AI API, openrouter alternative, cheaper ai api, chatgpt, deepseek, claude, gemini, mistral, grok, ai gateway, single ai api"
-        />
-        <link rel="stylesheet" href="assets/css/main.css" />
-        <link rel="stylesheet" href="assets/css/mobile.css" />
-        <link
-            rel="icon"
-            href="assets/images/OneLLM-icon.png"
-            type="image/png"
-        />
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>OneLLM - Universal AI API Platform</title>
+    <meta
+      name="description"
+      content="OneLLM offers a single, unified API to access top AI models like ChatGPT, Claude, and DeepSeek, with support for Gemini and more coming soon. Simplify your AI integration with our cheaper, more efficient alternative to OpenRouter. Get started with one library."
+    />
+    <meta
+      name="keywords"
+      content="unified AI API, openrouter alternative, cheaper ai api, chatgpt, deepseek, claude, gemini, mistral, grok, ai gateway, single ai api"
+    />
+    <link rel="stylesheet" href="assets/css/main.css" />
+    <link rel="stylesheet" href="assets/css/mobile.css" />
+    <link
+      rel="icon"
+      href="assets/images/OneLLM-icon.png"
+      type="image/png"
+    />
 
-        <link
-            rel="stylesheet"
-            href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
-        />
-        <script type="application/ld+json">
-            {
-                "@context": "https://schema.org",
-                "@type": "SoftwareApplication",
-                "name": "OneLLM",
-                "applicationCategory": "DeveloperApplication",
-                "operatingSystem": "All",
-                "description": "OneLLM offers a single, unified API to access top AI models like ChatGPT, Claude, and DeepSeek. Simplify your AI integration with our cheaper, more efficient alternative to OpenRouter.",
-                "offers": {
-                    "@type": "Offer",
-                    "price": "0",
-                    "priceCurrency": "USD"
-                }
-            }
-        </script>
-    </head>
-    <body>
-        <header>
-            <div class="container">
-                <nav>
-                    <a href="/" class="logo"
-                        ><img
-                            id="icon-logo"
-                            src="assets/images/OneLLM-icon.png"
-                            class="fade-in-image"
-                        />OneLLM</a
-                    >
-                    <div class="nav-links">
-                        <a href="/">Home</a>
-                        <a href="/docs/">Documentation</a>
-                        <a href="/pricing/">Pricing</a>
-                        <!-- Add class="active" to current page link -->
-                        <a href="/dashboard/">Dashboard</a>
-                    </div>
-                    <div class="auth-buttons"></div>
-                </nav>
-            </div>
-        </header>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "SoftwareApplication",
+        "name": "OneLLM",
+        "applicationCategory": "DeveloperApplication",
+        "operatingSystem": "All",
+        "description": "OneLLM offers a single, unified API to access top AI models like ChatGPT, Claude, and DeepSeek. Simplify your AI integration with our cheaper, more efficient alternative to OpenRouter.",
+        "offers": {
+          "@type": "Offer",
+          "price": "0",
+          "priceCurrency": "USD"
+        }
+      }
+    </script>
+  </head>
+  <body>
+    <header>
+      <div class="container">
+        <nav>
+          <a href="/" class="logo"><img
+              id="icon-logo"
+              src="assets/images/OneLLM-icon.png"
+              class="fade-in-image"
+            />OneLLM</a>
+          <div class="nav-links">
+            <a href="/">Home</a>
+            <a href="/docs/">Documentation</a>
+            <a href="/pricing/">Pricing</a>
+            <!-- Add class="active" to current page link -->
+            <a href="/dashboard/">Dashboard</a>
+          </div>
+          <div class="auth-buttons"></div>
+        </nav>
+      </div>
+    </header>
 
-        <section class="hero">
-            <div class="container">
-                <div class="hero-content">
-                    <div class="hero-badge fade-in-slide-up">
-                        <span class="badge-icon">⚡</span>
-                        <span>Unified AI API Platform</span>
-                    </div>
-                    <h1 class="fade-in-slide-up">
-                        One API for All Your AI Needs
-                    </h1>
-                    <p class="hero-description fade-in-slide-up">
-                        Access OpenAI, Claude, DeepSeek, and Gemini through a
-                        single, unified API. Simplify your AI integration with
-                        our powerful, flexible REST API that works with all
-                        leading LLM providers.
-                    </p>
-                    <div class="hero-stats fade-in-slide-up">
-                        <div class="stat-item">
-                            <span class="stat-number">50+</span>
-                            <span class="stat-label">AI Models</span>
-                        </div>
-                        <div class="stat-item">
-                            <span class="stat-number">99.9%</span>
-                            <span class="stat-label">Uptime</span>
-                        </div>
-                        <div class="stat-item">
-                            <span class="stat-number">40</span>
-                            <span class="stat-label">Req/Min</span>
-                        </div>
-                    </div>
-                    <div class="hero-buttons fade-in-slide-up">
-                        <a href="/signup/" class="btn btn-primary btn-lg">
-                            <span>Get Started Free</span>
-                            <i class="fas fa-arrow-right"></i>
-                        </a>
-                        <button
-                            id="community-button"
-                            class="btn btn-outline btn-lg"
-                        >
-                            <i class="fab fa-discord"></i>
-                            <span>Join Community</span>
-                        </button>
-                    </div>
-                    <div class="hero-trust fade-in-slide-up">
-                        <span class="trust-text"
-                            >Trusted by developers worldwide</span
-                        >
-                    </div>
-                </div>
-                <div class="hero-visual">
-                    <div class="floating-card card-1">
-                        <div class="card-header">
-                            <span class="card-dot green"></span>
-                            <span class="card-dot yellow"></span>
-                            <span class="card-dot red"></span>
-                        </div>
-                        <div class="card-content">
-                            <div class="code-line">
-                                <span class="code-keyword">const</span>
-                                <span class="code-variable">response</span>
-                                <span class="code-operator">=</span>
-                            </div>
-                            <div class="code-line">
-                                <span class="code-indent"> </span>
-                                <span class="code-keyword">await</span>
-                                <span class="code-function">onellm</span>
-                                <span class="code-punctuation">.</span>
-                                <span class="code-function">chat</span>
-                                <span class="code-punctuation">()</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="floating-card card-2">
-                        <div class="provider-logos">
-                            <div class="provider-logo">GPT-4</div>
-                            <div class="provider-logo">Claude</div>
-                            <div class="provider-logo">Gemini</div>
-                        </div>
-                    </div>
-                    <div class="floating-card card-3">
-                        <div class="metric">
-                            <span class="metric-value">40</span>
-                            <span class="metric-label">req/min</span>
-                        </div>
-                        <div class="metric-chart">
-                            <div class="chart-bar" style="height: 60%"></div>
-                            <div class="chart-bar" style="height: 80%"></div>
-                            <div class="chart-bar" style="height: 100%"></div>
-                            <div class="chart-bar" style="height: 70%"></div>
-                        </div>
-                    </div>
-                </div>
+    <section class="hero">
+      <div class="container">
+        <div class="hero-content">
+          <div class="hero-badge fade-in-slide-up">
+            <span class="badge-icon">⚡</span>
+            <span>Unified AI API Platform</span>
+          </div>
+          <h1 class="fade-in-slide-up">
+            One API for All Your AI Needs
+          </h1>
+          <p class="hero-description fade-in-slide-up">
+            Access OpenAI, Claude, DeepSeek, and Gemini through a single,
+            unified API. Simplify your AI integration with our powerful,
+            flexible REST API that works with all leading LLM providers.
+          </p>
+          <div class="hero-stats fade-in-slide-up">
+            <div class="stat-item">
+              <span class="stat-number">50+</span>
+              <span class="stat-label">AI Models</span>
             </div>
-        </section>
-
-        <section class="features-section">
-            <div class="container">
-                <h2 class="fade-in-slide-up">Why Choose OneLLM?</h2>
-                <div class="features">
-                    <div class="card">
-                        <div class="feature-icon">
-                            <i class="fas fa-exchange-alt"></i>
-                        </div>
-                        <h3 class="fade-in-slide-up">
-                            One Integration, Multiple Models
-                        </h3>
-                        <p class="fade-in-slide-up">
-                            Connect once to our API and instantly access all
-                            leading AI models without managing multiple
-                            integrations.
-                        </p>
-                    </div>
-                    <div class="card">
-                        <div class="feature-icon">
-                            <i class="fas fa-shield-alt"></i>
-                        </div>
-                        <h3 class="fade-in-slide-up">
-                            Reliability & Redundancy
-                        </h3>
-                        <p class="fade-in-slide-up">
-                            Automatic failover between AI providers ensures your
-                            applications stay running even if one provider
-                            experiences issues.
-                        </p>
-                    </div>
-                    <div class="card">
-                        <div class="feature-icon">
-                            <i class="fas fa-chart-line"></i>
-                        </div>
-                        <h3 class="fade-in-slide-up">Cost Optimization</h3>
-                        <p class="fade-in-slide-up">
-                            Cheaper, Simpler, and easier to integrate with our
-                            API, than our competitors. Use one library, one
-                            payment point, and one API Key.
-                        </p>
-                    </div>
-                </div>
+            <div class="stat-item">
+              <span class="stat-number">99.9%</span>
+              <span class="stat-label">Uptime</span>
             </div>
-        </section>
-        <section class="providers-section">
-            <div class="container">
-                <h2 class="fade-in-slide-up">Supported AI Providers</h2>
-                <div class="providers">
-                    <div class="provider-card">
-                        <h3 class="fade-in-slide-up">OpenAI</h3>
-                        <p class="fade-in-slide-up">
-                            Access the latest ChatGPT Models, and more through
-                            our unified API
-                        </p>
-                    </div>
-                    <div class="provider-card">
-                        <h3 class="fade-in-slide-up">Anthropic</h3>
-                        <p class="fade-in-slide-up">
-                            Connect to Claude models seamlessly
-                        </p>
-                    </div>
-                    <div class="provider-card">
-                        <h3 class="fade-in-slide-up">Google</h3>
-                        <p class="fade-in-slide-up">
-                            Integrate with Gemini models easily
-                        </p>
-                    </div>
-                    <div class="provider-card">
-                        <h3 class="fade-in-slide-up">DeepSeek</h3>
-                        <p class="fade-in-slide-up">
-                            Leverage DeepSeek's powerful models
-                        </p>
-                    </div>
-                </div>
+            <div class="stat-item">
+              <span class="stat-number">40</span>
+              <span class="stat-label">Req/Min</span>
             </div>
-        </section>
-
-        <section class="comparison-section">
-            <div class="container">
-                <h2 class="fade-in-slide-up">Competitor Comparison</h2>
-                <table class="comparison-table">
-                    <thead>
-                        <tr>
-                            <th>Provider</th>
-                            <th>Simple to integrate</th>
-                            <th>Single library</th>
-                            <th>Same output format</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>OpenRouter</td>
-                            <td class="check">
-                                <i class="fas fa-check-circle"></i>
-                            </td>
-                            <td class="cross">
-                                <i class="fas fa-times-circle"></i>
-                            </td>
-                            <td class="cross">
-                                <i class="fas fa-times-circle"></i>
-                            </td>
-                        </tr>
-                        <tr class="highlight">
-                            <td><b>OneLLM</b></td>
-                            <td class="check">
-                                <i class="fas fa-check-circle"></i>
-                            </td>
-                            <td class="check">
-                                <i class="fas fa-check-circle"></i>
-                            </td>
-                            <td class="check">
-                                <i class="fas fa-check-circle"></i>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>Amazon Bedrock</td>
-                            <td class="cross">
-                                <i class="fas fa-times-circle"></i>
-                            </td>
-                            <td class="check">
-                                <i class="fas fa-check-circle"></i>
-                            </td>
-                            <td class="check">
-                                <i class="fas fa-check-circle"></i>
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-        </section>
-        <section id="cta-container"></section>
-
-        <div id="community-modal" class="modal">
-            <div class="modal-content">
-                <span class="close-button">&times;</span>
-                <iframe
-                    src="https://discord.com/widget?id=1394998454874538014&theme=dark"
-                    width="350"
-                    height="500"
-                    allowtransparency="true"
-                    frameborder="0"
-                    sandbox="allow-popups allow-popups-to-escape-sandbox allow-same-origin allow-scripts"
-                ></iframe>
-            </div>
+          </div>
+          <div class="hero-buttons fade-in-slide-up">
+            <a href="/signup/" class="btn btn-primary btn-lg">
+              <span>Get Started Free</span>
+              <i class="fas fa-arrow-right"></i>
+            </a>
+            <button
+              id="community-button"
+              class="btn btn-outline btn-lg"
+            >
+              <i class="fab fa-discord"></i>
+              <span>Join Community</span>
+            </button>
+          </div>
+          <div class="hero-trust fade-in-slide-up">
+            <span class="trust-text">Trusted by developers worldwide</span>
+          </div>
         </div>
-
-        <footer>
-            <div class="container">
-                <div class="footer-content">
-                    <div class="footer-brand">
-                        <h3>OneLLM</h3>
-                        <p>The unified API for all your AI needs</p>
-                    </div>
-                    <div class="footer-links">
-                        <div class="footer-column">
-                            <h4>Product</h4>
-                            <a href="/docs/index.html">Documentation</a>
-                            <a href="/pricing/">Pricing</a>
-                        </div>
-                        <div class="footer-column">
-                            <h4>Legal</h4>
-                            <a href="/tos/">Terms</a>
-                            <a href="/privacypolicy/">Privacy</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="footer-bottom"></div>
+        <div class="hero-visual">
+          <div class="floating-card card-1">
+            <div class="card-header">
+              <span class="card-dot green"></span>
+              <span class="card-dot yellow"></span>
+              <span class="card-dot red"></span>
             </div>
-        </footer>
-        <div id="cookie-notice">
-            <p>
-                This website uses only necessary cookies to ensure basic
-                functionality. By using this site, you consent to our use of
-                cookies.
+            <div class="card-content">
+              <div class="code-line">
+                <span class="code-keyword">const</span>
+                <span class="code-variable">response</span>
+                <span class="code-operator">=</span>
+              </div>
+              <div class="code-line">
+                <span class="code-indent"> </span>
+                <span class="code-keyword">await</span>
+                <span class="code-function">onellm</span>
+                <span class="code-punctuation">.</span>
+                <span class="code-function">chat</span>
+                <span class="code-punctuation">()</span>
+              </div>
+            </div>
+          </div>
+          <div class="floating-card card-2">
+            <div class="provider-logos">
+              <div class="provider-logo">GPT-4</div>
+              <div class="provider-logo">Claude</div>
+              <div class="provider-logo">Gemini</div>
+            </div>
+          </div>
+          <div class="floating-card card-3">
+            <div class="metric">
+              <span class="metric-value">40</span>
+              <span class="metric-label">req/min</span>
+            </div>
+            <div class="metric-chart">
+              <div class="chart-bar" style="height: 60%"></div>
+              <div class="chart-bar" style="height: 80%"></div>
+              <div class="chart-bar" style="height: 100%"></div>
+              <div class="chart-bar" style="height: 70%"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="features-section">
+      <div class="container">
+        <h2 class="fade-in-slide-up">Why Choose OneLLM?</h2>
+        <div class="features">
+          <div class="card">
+            <div class="feature-icon">
+              <i class="fas fa-exchange-alt"></i>
+            </div>
+            <h3 class="fade-in-slide-up">
+              One Integration, Multiple Models
+            </h3>
+            <p class="fade-in-slide-up">
+              Connect once to our API and instantly access all leading AI models
+              without managing multiple integrations.
             </p>
-            <button id="accept-cookies" class="btn btn-primary">Accept</button>
+          </div>
+          <div class="card">
+            <div class="feature-icon">
+              <i class="fas fa-shield-alt"></i>
+            </div>
+            <h3 class="fade-in-slide-up">
+              Reliability & Redundancy
+            </h3>
+            <p class="fade-in-slide-up">
+              Automatic failover between AI providers ensures your applications
+              stay running even if one provider experiences issues.
+            </p>
+          </div>
+          <div class="card">
+            <div class="feature-icon">
+              <i class="fas fa-chart-line"></i>
+            </div>
+            <h3 class="fade-in-slide-up">Cost Optimization</h3>
+            <p class="fade-in-slide-up">
+              Cheaper, Simpler, and easier to integrate with our API, than our
+              competitors. Use one library, one payment point, and one API Key.
+            </p>
+          </div>
         </div>
-        <script src="/assets/js/main.js"></script>
-    </body>
+      </div>
+    </section>
+    <section class="providers-section">
+      <div class="container">
+        <h2 class="fade-in-slide-up">Supported AI Providers</h2>
+        <div class="providers">
+          <div class="provider-card">
+            <h3 class="fade-in-slide-up">OpenAI</h3>
+            <p class="fade-in-slide-up">
+              Access the latest ChatGPT Models, and more through our unified API
+            </p>
+          </div>
+          <div class="provider-card">
+            <h3 class="fade-in-slide-up">Anthropic</h3>
+            <p class="fade-in-slide-up">
+              Connect to Claude models seamlessly
+            </p>
+          </div>
+          <div class="provider-card">
+            <h3 class="fade-in-slide-up">Google</h3>
+            <p class="fade-in-slide-up">
+              Integrate with Gemini models easily
+            </p>
+          </div>
+          <div class="provider-card">
+            <h3 class="fade-in-slide-up">DeepSeek</h3>
+            <p class="fade-in-slide-up">
+              Leverage DeepSeek's powerful models
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="comparison-section">
+      <div class="container">
+        <h2 class="fade-in-slide-up">Competitor Comparison</h2>
+        <table class="comparison-table">
+          <thead>
+            <tr>
+              <th>Provider</th>
+              <th>Simple to integrate</th>
+              <th>Single library</th>
+              <th>Same output format</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>OpenRouter</td>
+              <td class="check">
+                <i class="fas fa-check-circle"></i>
+              </td>
+              <td class="cross">
+                <i class="fas fa-times-circle"></i>
+              </td>
+              <td class="cross">
+                <i class="fas fa-times-circle"></i>
+              </td>
+            </tr>
+            <tr class="highlight">
+              <td><b>OneLLM</b></td>
+              <td class="check">
+                <i class="fas fa-check-circle"></i>
+              </td>
+              <td class="check">
+                <i class="fas fa-check-circle"></i>
+              </td>
+              <td class="check">
+                <i class="fas fa-check-circle"></i>
+              </td>
+            </tr>
+            <tr>
+              <td>Amazon Bedrock</td>
+              <td class="cross">
+                <i class="fas fa-times-circle"></i>
+              </td>
+              <td class="check">
+                <i class="fas fa-check-circle"></i>
+              </td>
+              <td class="check">
+                <i class="fas fa-check-circle"></i>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+    <section id="cta-container"></section>
+
+    <div id="community-modal" class="modal">
+      <div class="modal-content">
+        <span class="close-button">&times;</span>
+        <iframe
+          src="https://discord.com/widget?id=1394998454874538014&theme=dark"
+          width="350"
+          height="500"
+          allowtransparency="true"
+          frameborder="0"
+          sandbox="allow-popups allow-popups-to-escape-sandbox allow-same-origin allow-scripts"
+        ></iframe>
+      </div>
+    </div>
+
+    <footer>
+      <div class="container">
+        <div class="footer-content">
+          <div class="footer-brand">
+            <h3>OneLLM</h3>
+            <p>The unified API for all your AI needs</p>
+          </div>
+          <div class="footer-links">
+            <div class="footer-column">
+              <h4>Product</h4>
+              <a href="/docs/index.html">Documentation</a>
+              <a href="/pricing/">Pricing</a>
+            </div>
+            <div class="footer-column">
+              <h4>Legal</h4>
+              <a href="/tos/">Terms</a>
+              <a href="/privacypolicy/">Privacy</a>
+            </div>
+          </div>
+        </div>
+        <div class="footer-bottom"></div>
+      </div>
+    </footer>
+    <div id="cookie-notice">
+      <p>
+        This website uses only necessary cookies to ensure basic functionality.
+        By using this site, you consent to our use of cookies.
+      </p>
+      <button id="accept-cookies" class="btn btn-primary">Accept</button>
+    </div>
+    <script src="/assets/js/main.js"></script>
+  </body>
 </html>

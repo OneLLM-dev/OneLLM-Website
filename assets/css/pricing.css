@@ -1,805 +1,805 @@
 /* Pricing Page Styles */
 
 .pricing-container {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-    gap: 32px;
-    margin-top: 60px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  gap: 32px;
+  margin-top: 60px;
 }
 
 .pricing-card {
-    background: rgba(255, 255, 255, 0.95);
-    backdrop-filter: blur(20px);
-    -webkit-backdrop-filter: blur(20px);
-    border-radius: var(--border-radius-lg);
-    box-shadow: var(--shadow);
-    padding: 32px;
-    transition: var(--transition);
-    border: 1px solid var(--gray-200);
-    position: relative;
-    overflow: hidden;
-    display: flex;
-    flex-direction: column;
-    height: fit-content;
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-radius: var(--border-radius-lg);
+  box-shadow: var(--shadow);
+  padding: 32px;
+  transition: var(--transition);
+  border: 1px solid var(--gray-200);
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  height: fit-content;
 }
 
 .pricing-card::before {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    height: 4px;
-    background: linear-gradient(
-        90deg,
-        var(--primary),
-        var(--secondary),
-        var(--accent)
-    );
-    transform: scaleX(0);
-    transition: transform 0.4s ease;
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: linear-gradient(
+    90deg,
+    var(--primary),
+    var(--secondary),
+    var(--accent)
+  );
+  transform: scaleX(0);
+  transition: transform 0.4s ease;
 }
 
 .pricing-card:hover {
-    transform: translateY(-12px);
-    box-shadow: var(--shadow-xl);
-    border-color: var(--primary);
+  transform: translateY(-12px);
+  box-shadow: var(--shadow-xl);
+  border-color: var(--primary);
 }
 
 .pricing-card:hover::before {
-    transform: scaleX(1);
+  transform: scaleX(1);
 }
 
 .model-name {
-    font-weight: 800;
-    font-size: 1.4rem;
-    margin-bottom: 16px;
-    color: var(--gray-900);
-    background: linear-gradient(135deg, var(--primary), var(--secondary));
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-    letter-spacing: -0.01em;
-    position: relative;
+  font-weight: 800;
+  font-size: 1.4rem;
+  margin-bottom: 16px;
+  color: var(--gray-900);
+  background: linear-gradient(135deg, var(--primary), var(--secondary));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  letter-spacing: -0.01em;
+  position: relative;
 }
 
 .model-name::after {
-    content: "";
-    position: absolute;
-    bottom: -8px;
-    left: 0;
-    width: 40px;
-    height: 3px;
-    background: linear-gradient(90deg, var(--primary), var(--secondary));
-    border-radius: 2px;
+  content: "";
+  position: absolute;
+  bottom: -8px;
+  left: 0;
+  width: 40px;
+  height: 3px;
+  background: linear-gradient(90deg, var(--primary), var(--secondary));
+  border-radius: 2px;
 }
 
 .price {
-    font-size: 1rem;
-    font-weight: 600;
-    color: var(--gray-800);
-    margin: 24px 0;
-    padding: 24px;
-    background: linear-gradient(
-        135deg,
-        rgba(79, 70, 229, 0.06) 0%,
-        rgba(6, 182, 212, 0.04) 100%
-    );
-    border-radius: var(--border-radius);
-    border: 1px solid rgba(79, 70, 229, 0.1);
-    line-height: 1.5;
-    position: relative;
-    overflow: hidden;
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--gray-800);
+  margin: 24px 0;
+  padding: 24px;
+  background: linear-gradient(
+    135deg,
+    rgba(79, 70, 229, 0.06) 0%,
+    rgba(6, 182, 212, 0.04) 100%
+  );
+  border-radius: var(--border-radius);
+  border: 1px solid rgba(79, 70, 229, 0.1);
+  line-height: 1.5;
+  position: relative;
+  overflow: hidden;
 }
 
 .price::before {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 4px;
-    height: 100%;
-    background: linear-gradient(180deg, var(--primary), var(--accent));
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 4px;
+  height: 100%;
+  background: linear-gradient(180deg, var(--primary), var(--accent));
 }
 
 .price-breakdown {
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
 }
 
 .price-item {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    font-size: 0.95rem;
-    padding: 8px 0;
-    border-bottom: 1px solid rgba(79, 70, 229, 0.1);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 0.95rem;
+  padding: 8px 0;
+  border-bottom: 1px solid rgba(79, 70, 229, 0.1);
 }
 
 .price-item:last-child {
-    border-bottom: none;
+  border-bottom: none;
 }
 
 .price-label {
-    color: var(--gray-600);
-    font-weight: 600;
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    position: relative;
+  color: var(--gray-600);
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  position: relative;
 }
 
 .price-label::before {
-    content: "";
-    width: 12px;
-    height: 12px;
-    border-radius: 50%;
-    background: linear-gradient(135deg, var(--primary), var(--secondary));
-    flex-shrink: 0;
-    box-shadow: 0 2px 4px rgba(79, 70, 229, 0.3);
+  content: "";
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--primary), var(--secondary));
+  flex-shrink: 0;
+  box-shadow: 0 2px 4px rgba(79, 70, 229, 0.3);
 }
 
 .price-label.output::before {
-    background: linear-gradient(135deg, var(--accent), var(--success));
-    box-shadow: 0 2px 4px rgba(6, 182, 212, 0.3);
+  background: linear-gradient(135deg, var(--accent), var(--success));
+  box-shadow: 0 2px 4px rgba(6, 182, 212, 0.3);
 }
 
 .price-value {
-    color: var(--gray-900);
-    font-weight: 800;
-    font-size: 1.1rem;
-    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+  color: var(--gray-900);
+  font-weight: 800;
+  font-size: 1.1rem;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
 }
 
 .price-unit {
-    font-size: 0.8rem;
-    color: var(--gray-500);
-    font-weight: 600;
-    margin-top: 12px;
-    text-align: center;
-    display: block;
-    text-transform: uppercase;
-    letter-spacing: 0.5px;
-    padding: 8px 16px;
-    background: rgba(79, 70, 229, 0.05);
-    border-radius: 20px;
-    border: 1px solid rgba(79, 70, 229, 0.1);
+  font-size: 0.8rem;
+  color: var(--gray-500);
+  font-weight: 600;
+  margin-top: 12px;
+  text-align: center;
+  display: block;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  padding: 8px 16px;
+  background: rgba(79, 70, 229, 0.05);
+  border-radius: 20px;
+  border: 1px solid rgba(79, 70, 229, 0.1);
 }
 
 .pricing-card p {
-    color: var(--gray-600);
-    font-size: 1rem;
-    line-height: 1.6;
-    margin-top: auto;
-    padding-top: 16px;
-    font-weight: 500;
+  color: var(--gray-600);
+  font-size: 1rem;
+  line-height: 1.6;
+  margin-top: auto;
+  padding-top: 16px;
+  font-weight: 500;
 }
 
 .provider-section {
-    margin-bottom: 100px;
-    position: relative;
+  margin-bottom: 100px;
+  position: relative;
 }
 
 .provider-section::before {
-    content: "";
-    position: absolute;
-    top: -40px;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 100px;
-    height: 4px;
-    background: linear-gradient(90deg, var(--primary), var(--accent));
-    border-radius: 2px;
-    opacity: 0.6;
+  content: "";
+  position: absolute;
+  top: -40px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100px;
+  height: 4px;
+  background: linear-gradient(90deg, var(--primary), var(--accent));
+  border-radius: 2px;
+  opacity: 0.6;
 }
 
 .provider-header {
-    display: flex;
-    align-items: center;
-    margin-bottom: 32px;
-    padding: 32px;
-    border-radius: var(--border-radius-lg);
-    background: linear-gradient(
-        135deg,
-        rgba(255, 255, 255, 0.9) 0%,
-        rgba(248, 250, 252, 0.9) 100%
-    );
-    backdrop-filter: blur(20px);
-    border: 1px solid var(--gray-200);
-    box-shadow: var(--shadow);
-    position: relative;
-    overflow: hidden;
+  display: flex;
+  align-items: center;
+  margin-bottom: 32px;
+  padding: 32px;
+  border-radius: var(--border-radius-lg);
+  background: linear-gradient(
+    135deg,
+    rgba(255, 255, 255, 0.9) 0%,
+    rgba(248, 250, 252, 0.9) 100%
+  );
+  backdrop-filter: blur(20px);
+  border: 1px solid var(--gray-200);
+  box-shadow: var(--shadow);
+  position: relative;
+  overflow: hidden;
 }
 
 .provider-header::before {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    height: 4px;
-    background: linear-gradient(90deg, var(--primary), var(--secondary));
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: linear-gradient(90deg, var(--primary), var(--secondary));
 }
 
 .provider-icon {
-    font-size: 32px;
-    margin-right: 24px;
-    color: white;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 80px;
-    height: 80px;
-    border-radius: 20px;
-    background: linear-gradient(135deg, var(--primary), var(--secondary));
-    box-shadow: var(--shadow-lg);
-    position: relative;
-    overflow: hidden;
+  font-size: 32px;
+  margin-right: 24px;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 80px;
+  height: 80px;
+  border-radius: 20px;
+  background: linear-gradient(135deg, var(--primary), var(--secondary));
+  box-shadow: var(--shadow-lg);
+  position: relative;
+  overflow: hidden;
 }
 
 .provider-icon::before {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: -100%;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(
-        90deg,
-        transparent,
-        rgba(255, 255, 255, 0.2),
-        transparent
-    );
-    transition: left 0.5s;
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.2),
+    transparent
+  );
+  transition: left 0.5s;
 }
 
 .provider-header:hover .provider-icon::before {
-    left: 100%;
+  left: 100%;
 }
 
 .provider-title {
-    margin-bottom: 8px;
-    font-size: 2.5rem;
-    font-weight: 800;
-    color: var(--gray-900);
-    letter-spacing: -0.02em;
-    background: linear-gradient(135deg, var(--primary), var(--secondary));
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
+  margin-bottom: 8px;
+  font-size: 2.5rem;
+  font-weight: 800;
+  color: var(--gray-900);
+  letter-spacing: -0.02em;
+  background: linear-gradient(135deg, var(--primary), var(--secondary));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
 }
 
 .provider-section > p {
-    color: var(--gray-600);
-    font-size: 1.2rem;
-    margin-bottom: 0;
-    font-weight: 500;
-    line-height: 1.6;
+  color: var(--gray-600);
+  font-size: 1.2rem;
+  margin-bottom: 0;
+  font-weight: 500;
+  line-height: 1.6;
 }
 
 .view-toggle {
-    display: flex;
-    justify-content: center;
-    margin-bottom: 80px;
-    gap: 8px;
-    padding: 8px;
-    background: rgba(255, 255, 255, 0.9);
-    backdrop-filter: blur(20px);
-    border-radius: var(--border-radius-lg);
-    box-shadow: var(--shadow);
-    width: fit-content;
-    margin-left: auto;
-    margin-right: auto;
-    border: 1px solid var(--gray-200);
-    position: relative;
-    overflow: hidden;
+  display: flex;
+  justify-content: center;
+  margin-bottom: 80px;
+  gap: 8px;
+  padding: 8px;
+  background: rgba(255, 255, 255, 0.9);
+  backdrop-filter: blur(20px);
+  border-radius: var(--border-radius-lg);
+  box-shadow: var(--shadow);
+  width: fit-content;
+  margin-left: auto;
+  margin-right: auto;
+  border: 1px solid var(--gray-200);
+  position: relative;
+  overflow: hidden;
 }
 
 .view-toggle::before {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    height: 3px;
-    background: linear-gradient(90deg, var(--primary), var(--accent));
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, var(--primary), var(--accent));
 }
 
 .view-toggle .btn {
-    padding: 16px 32px;
-    border-radius: var(--border-radius);
-    font-weight: 700;
-    transition: var(--transition);
-    border: none;
-    font-size: 1rem;
-    letter-spacing: 0.01em;
-    position: relative;
-    overflow: hidden;
+  padding: 16px 32px;
+  border-radius: var(--border-radius);
+  font-weight: 700;
+  transition: var(--transition);
+  border: none;
+  font-size: 1rem;
+  letter-spacing: 0.01em;
+  position: relative;
+  overflow: hidden;
 }
 
 .view-toggle .btn::before {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: -100%;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(
-        90deg,
-        transparent,
-        rgba(255, 255, 255, 0.3),
-        transparent
-    );
-    transition: left 0.5s;
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.3),
+    transparent
+  );
+  transition: left 0.5s;
 }
 
 .view-toggle .btn:hover::before {
-    left: 100%;
+  left: 100%;
 }
 
 .view-toggle .btn-primary {
-    background: linear-gradient(135deg, var(--primary), var(--secondary));
-    color: white;
-    box-shadow: var(--shadow);
+  background: linear-gradient(135deg, var(--primary), var(--secondary));
+  color: white;
+  box-shadow: var(--shadow);
 }
 
 .view-toggle .btn-primary:hover {
-    background: linear-gradient(
-        135deg,
-        var(--primary-dark),
-        var(--secondary-dark)
-    );
-    transform: translateY(-2px);
-    box-shadow: var(--shadow-lg);
+  background: linear-gradient(
+    135deg,
+    var(--primary-dark),
+    var(--secondary-dark)
+  );
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-lg);
 }
 
 .view-toggle .btn-outline {
-    background: transparent;
-    color: var(--gray-600);
-    border: 2px solid var(--gray-300);
+  background: transparent;
+  color: var(--gray-600);
+  border: 2px solid var(--gray-300);
 }
 
 .view-toggle .btn-outline:hover {
-    background: rgba(79, 70, 229, 0.05);
-    color: var(--primary);
-    border-color: var(--primary);
-    transform: translateY(-1px);
+  background: rgba(79, 70, 229, 0.05);
+  color: var(--primary);
+  border-color: var(--primary);
+  transform: translateY(-1px);
 }
 
 .purchase-section {
-    text-align: center;
-    padding: 100px 0;
-    background: linear-gradient(
-        135deg,
-        rgba(248, 250, 252, 0.8) 0%,
-        rgba(255, 255, 255, 0.9) 50%,
-        rgba(241, 245, 249, 0.8) 100%
-    );
-    position: relative;
-    overflow: hidden;
+  text-align: center;
+  padding: 100px 0;
+  background: linear-gradient(
+    135deg,
+    rgba(248, 250, 252, 0.8) 0%,
+    rgba(255, 255, 255, 0.9) 50%,
+    rgba(241, 245, 249, 0.8) 100%
+  );
+  position: relative;
+  overflow: hidden;
 }
 
 .purchase-section::before {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: url('data:image/svg+xml,<svg width="60" height="60" viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg"><g fill="none" fill-rule="evenodd"><g fill="%234f46e5" fill-opacity="0.03"><circle cx="30" cy="30" r="2"/></g></g></svg>');
-    z-index: 0;
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: url('data:image/svg+xml,<svg width="60" height="60" viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg"><g fill="none" fill-rule="evenodd"><g fill="%234f46e5" fill-opacity="0.03"><circle cx="30" cy="30" r="2"/></g></g></svg>');
+  z-index: 0;
 }
 
 .purchase-section .container {
-    position: relative;
-    z-index: 1;
+  position: relative;
+  z-index: 1;
 }
 
 .purchase-section h2 {
-    font-size: 3rem;
-    font-weight: 800;
-    margin-bottom: 20px;
-    background: linear-gradient(135deg, var(--primary), var(--secondary));
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
+  font-size: 3rem;
+  font-weight: 800;
+  margin-bottom: 20px;
+  background: linear-gradient(135deg, var(--primary), var(--secondary));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
 }
 
 .purchase-section p {
-    font-size: 1.3rem;
-    color: var(--gray-600);
-    margin-bottom: 40px;
-    max-width: 600px;
-    margin-left: auto;
-    margin-right: auto;
+  font-size: 1.3rem;
+  color: var(--gray-600);
+  margin-bottom: 40px;
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .btn-purchase {
-    display: inline-flex;
-    align-items: center;
-    gap: 12px;
-    padding: 20px 40px;
-    background: linear-gradient(135deg, var(--primary), var(--secondary));
-    color: white;
-    text-decoration: none;
-    border-radius: var(--border-radius-lg);
-    font-weight: 700;
-    font-size: 1.2rem;
-    transition: var(--transition);
-    text-align: center;
-    margin-top: 32px;
-    box-shadow: var(--shadow-lg);
-    border: none;
-    cursor: pointer;
-    position: relative;
-    overflow: hidden;
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  padding: 20px 40px;
+  background: linear-gradient(135deg, var(--primary), var(--secondary));
+  color: white;
+  text-decoration: none;
+  border-radius: var(--border-radius-lg);
+  font-weight: 700;
+  font-size: 1.2rem;
+  transition: var(--transition);
+  text-align: center;
+  margin-top: 32px;
+  box-shadow: var(--shadow-lg);
+  border: none;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
 }
 
 .btn-purchase::before {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: -100%;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(
-        90deg,
-        transparent,
-        rgba(255, 255, 255, 0.3),
-        transparent
-    );
-    transition: left 0.5s;
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.3),
+    transparent
+  );
+  transition: left 0.5s;
 }
 
 .btn-purchase:hover::before {
-    left: 100%;
+  left: 100%;
 }
 
 .btn-purchase:hover {
-    background: linear-gradient(
-        135deg,
-        var(--primary-dark),
-        var(--secondary-dark)
-    );
-    transform: translateY(-4px);
-    box-shadow: var(--shadow-xl);
+  background: linear-gradient(
+    135deg,
+    var(--primary-dark),
+    var(--secondary-dark)
+  );
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-xl);
 }
 
 .btn-purchase:active {
-    transform: translateY(-2px);
+  transform: translateY(-2px);
 }
 
 /* Special styling for premium models */
 .pricing-card[data-tier="premium"] {
-    background: linear-gradient(
-        135deg,
-        rgba(255, 243, 224, 0.9) 0%,
-        rgba(255, 255, 255, 0.95) 100%
-    );
-    border-color: #f59e0b;
-    position: relative;
+  background: linear-gradient(
+    135deg,
+    rgba(255, 243, 224, 0.9) 0%,
+    rgba(255, 255, 255, 0.95) 100%
+  );
+  border-color: #f59e0b;
+  position: relative;
 }
 
 .pricing-card[data-tier="premium"]::before {
-    background: linear-gradient(90deg, #f59e0b, #fbbf24);
+  background: linear-gradient(90deg, #f59e0b, #fbbf24);
 }
 
 .pricing-card[data-tier="premium"]::after {
-    content: "PREMIUM";
-    position: absolute;
-    top: 16px;
-    right: -32px;
-    background: linear-gradient(135deg, #f59e0b, #f97316);
-    color: white;
-    padding: 4px 40px;
-    font-size: 0.7rem;
-    font-weight: 800;
-    letter-spacing: 1px;
-    transform: rotate(45deg);
-    box-shadow: var(--shadow);
+  content: "PREMIUM";
+  position: absolute;
+  top: 16px;
+  right: -32px;
+  background: linear-gradient(135deg, #f59e0b, #f97316);
+  color: white;
+  padding: 4px 40px;
+  font-size: 0.7rem;
+  font-weight: 800;
+  letter-spacing: 1px;
+  transform: rotate(45deg);
+  box-shadow: var(--shadow);
 }
 
 .pricing-card[data-tier="premium"] .model-name {
-    background: linear-gradient(135deg, #f59e0b, #f97316);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
+  background: linear-gradient(135deg, #f59e0b, #f97316);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
 }
 
 .pricing-card[data-tier="premium"] .model-name::after {
-    background: linear-gradient(90deg, #f59e0b, #fbbf24);
+  background: linear-gradient(90deg, #f59e0b, #fbbf24);
 }
 
 .pricing-card[data-tier="premium"] .price {
-    background: linear-gradient(
-        135deg,
-        rgba(245, 158, 11, 0.1) 0%,
-        rgba(251, 191, 36, 0.05) 100%
-    );
-    border-color: rgba(245, 158, 11, 0.2);
+  background: linear-gradient(
+    135deg,
+    rgba(245, 158, 11, 0.1) 0%,
+    rgba(251, 191, 36, 0.05) 100%
+  );
+  border-color: rgba(245, 158, 11, 0.2);
 }
 
 .pricing-card[data-tier="premium"] .price::before {
-    background: linear-gradient(180deg, #f59e0b, #fbbf24);
+  background: linear-gradient(180deg, #f59e0b, #fbbf24);
 }
 
 /* Cost comparison highlight */
 .price-comparison {
-    position: absolute;
-    top: 20px;
-    right: 20px;
-    background: linear-gradient(135deg, var(--success), var(--accent));
-    color: white;
-    padding: 6px 16px;
-    border-radius: 20px;
-    font-size: 0.75rem;
-    font-weight: 700;
-    letter-spacing: 0.5px;
-    text-transform: uppercase;
-    transform: rotate(12deg);
-    box-shadow: var(--shadow);
-    z-index: 2;
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  background: linear-gradient(135deg, var(--success), var(--accent));
+  color: white;
+  padding: 6px 16px;
+  border-radius: 20px;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  transform: rotate(12deg);
+  box-shadow: var(--shadow);
+  z-index: 2;
 }
 
 /* Responsive adjustments */
 @media (max-width: 1200px) {
-    .pricing-container {
-        grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-        gap: 28px;
-    }
+  .pricing-container {
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 28px;
+  }
 
-    .provider-title {
-        font-size: 2.25rem;
-    }
+  .provider-title {
+    font-size: 2.25rem;
+  }
 
-    .provider-icon {
-        width: 70px;
-        height: 70px;
-        font-size: 28px;
-        margin-right: 20px;
-    }
+  .provider-icon {
+    width: 70px;
+    height: 70px;
+    font-size: 28px;
+    margin-right: 20px;
+  }
 }
 
 @media (max-width: 968px) {
-    .pricing-container {
-        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-        gap: 24px;
-    }
+  .pricing-container {
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 24px;
+  }
 
-    .provider-title {
-        font-size: 2rem;
-    }
+  .provider-title {
+    font-size: 2rem;
+  }
 
-    .provider-icon {
-        width: 60px;
-        height: 60px;
-        font-size: 24px;
-        margin-right: 16px;
-    }
+  .provider-icon {
+    width: 60px;
+    height: 60px;
+    font-size: 24px;
+    margin-right: 16px;
+  }
 
-    .provider-header {
-        padding: 24px;
-    }
+  .provider-header {
+    padding: 24px;
+  }
 
-    .purchase-section {
-        padding: 80px 0;
-    }
+  .purchase-section {
+    padding: 80px 0;
+  }
 
-    .purchase-section h2 {
-        font-size: 2.5rem;
-    }
+  .purchase-section h2 {
+    font-size: 2.5rem;
+  }
 
-    .purchase-section p {
-        font-size: 1.2rem;
-    }
+  .purchase-section p {
+    font-size: 1.2rem;
+  }
 }
 
 @media (max-width: 768px) {
-    .pricing-container {
-        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-        gap: 20px;
-    }
+  .pricing-container {
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 20px;
+  }
 
-    .pricing-card {
-        padding: 28px;
-    }
+  .pricing-card {
+    padding: 28px;
+  }
 
-    .price {
-        font-size: 0.95rem;
-        padding: 20px;
-    }
+  .price {
+    font-size: 0.95rem;
+    padding: 20px;
+  }
 
-    .provider-header {
-        flex-direction: column;
-        align-items: center;
-        text-align: center;
-        gap: 16px;
-        padding: 28px 20px;
-    }
+  .provider-header {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 16px;
+    padding: 28px 20px;
+  }
 
-    .provider-icon {
-        margin-right: 0;
-        margin-bottom: 8px;
-    }
+  .provider-icon {
+    margin-right: 0;
+    margin-bottom: 8px;
+  }
 
-    .provider-title {
-        font-size: 1.75rem;
-        margin-bottom: 12px;
-    }
+  .provider-title {
+    font-size: 1.75rem;
+    margin-bottom: 12px;
+  }
 
-    .view-toggle {
-        flex-direction: column;
-        width: 240px;
-        gap: 4px;
-    }
+  .view-toggle {
+    flex-direction: column;
+    width: 240px;
+    gap: 4px;
+  }
 
-    .view-toggle .btn {
-        padding: 14px 24px;
-        font-size: 0.95rem;
-    }
+  .view-toggle .btn {
+    padding: 14px 24px;
+    font-size: 0.95rem;
+  }
 
-    .purchase-section {
-        padding: 60px 0;
-    }
+  .purchase-section {
+    padding: 60px 0;
+  }
 
-    .purchase-section h2 {
-        font-size: 2rem;
-    }
+  .purchase-section h2 {
+    font-size: 2rem;
+  }
 
-    .purchase-section p {
-        font-size: 1.1rem;
-        padding: 0 20px;
-    }
+  .purchase-section p {
+    font-size: 1.1rem;
+    padding: 0 20px;
+  }
 
-    .btn-purchase {
-        padding: 16px 32px;
-        font-size: 1.1rem;
-    }
+  .btn-purchase {
+    padding: 16px 32px;
+    font-size: 1.1rem;
+  }
 }
 
 @media (max-width: 480px) {
-    .pricing-container {
-        grid-template-columns: 1fr;
-        gap: 16px;
-    }
+  .pricing-container {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
 
-    .pricing-card {
-        padding: 24px;
-    }
+  .pricing-card {
+    padding: 24px;
+  }
 
-    .model-name {
-        font-size: 1.3rem;
-    }
+  .model-name {
+    font-size: 1.3rem;
+  }
 
-    .provider-section {
-        margin-bottom: 60px;
-    }
+  .provider-section {
+    margin-bottom: 60px;
+  }
 
-    .provider-header {
-        padding: 20px 16px;
-    }
+  .provider-header {
+    padding: 20px 16px;
+  }
 
-    .provider-title {
-        font-size: 1.5rem;
-    }
+  .provider-title {
+    font-size: 1.5rem;
+  }
 
-    .provider-icon {
-        width: 50px;
-        height: 50px;
-        font-size: 20px;
-    }
+  .provider-icon {
+    width: 50px;
+    height: 50px;
+    font-size: 20px;
+  }
 
-    .purchase-section h2 {
-        font-size: 1.75rem;
-    }
+  .purchase-section h2 {
+    font-size: 1.75rem;
+  }
 
-    .purchase-section p {
-        font-size: 1rem;
-    }
+  .purchase-section p {
+    font-size: 1rem;
+  }
 
-    .btn-purchase {
-        padding: 14px 28px;
-        font-size: 1rem;
-    }
+  .btn-purchase {
+    padding: 14px 28px;
+    font-size: 1rem;
+  }
 
-    .view-toggle {
-        width: 200px;
-    }
+  .view-toggle {
+    width: 200px;
+  }
 
-    .view-toggle .btn {
-        padding: 12px 20px;
-        font-size: 0.9rem;
-    }
+  .view-toggle .btn {
+    padding: 12px 20px;
+    font-size: 0.9rem;
+  }
 }
 
 /* Animation for pricing cards */
 @keyframes slideInUp {
-    from {
-        opacity: 0;
-        transform: translateY(40px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
+  from {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 .pricing-card {
-    animation: slideInUp 0.6s ease-out;
-    animation-fill-mode: both;
+  animation: slideInUp 0.6s ease-out;
+  animation-fill-mode: both;
 }
 
 .pricing-card:nth-child(1) {
-    animation-delay: 0.1s;
+  animation-delay: 0.1s;
 }
 .pricing-card:nth-child(2) {
-    animation-delay: 0.15s;
+  animation-delay: 0.15s;
 }
 .pricing-card:nth-child(3) {
-    animation-delay: 0.2s;
+  animation-delay: 0.2s;
 }
 .pricing-card:nth-child(4) {
-    animation-delay: 0.25s;
+  animation-delay: 0.25s;
 }
 .pricing-card:nth-child(5) {
-    animation-delay: 0.3s;
+  animation-delay: 0.3s;
 }
 .pricing-card:nth-child(6) {
-    animation-delay: 0.35s;
+  animation-delay: 0.35s;
 }
 .pricing-card:nth-child(7) {
-    animation-delay: 0.4s;
+  animation-delay: 0.4s;
 }
 .pricing-card:nth-child(8) {
-    animation-delay: 0.45s;
+  animation-delay: 0.45s;
 }
 
 /* Loading state */
 .pricing-card.loading {
-    opacity: 0.6;
-    pointer-events: none;
-    position: relative;
+  opacity: 0.6;
+  pointer-events: none;
+  position: relative;
 }
 
 .pricing-card.loading::after {
-    content: "";
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    width: 24px;
-    height: 24px;
-    margin: -12px 0 0 -12px;
-    border: 3px solid var(--primary);
-    border-top-color: transparent;
-    border-radius: 50%;
-    animation: spin 1s linear infinite;
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 24px;
+  height: 24px;
+  margin: -12px 0 0 -12px;
+  border: 3px solid var(--primary);
+  border-top-color: transparent;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
 }
 
 @keyframes spin {
-    to {
-        transform: rotate(360deg);
-    }
+  to {
+    transform: rotate(360deg);
+  }
 }
 
 /* Hover effects for better interactivity */
 .pricing-card:hover .price {
-    background: linear-gradient(
-        135deg,
-        rgba(79, 70, 229, 0.1) 0%,
-        rgba(6, 182, 212, 0.06) 100%
-    );
-    transform: scale(1.02);
+  background: linear-gradient(
+    135deg,
+    rgba(79, 70, 229, 0.1) 0%,
+    rgba(6, 182, 212, 0.06) 100%
+  );
+  transform: scale(1.02);
 }
 
 .pricing-card:hover .model-name::after {
-    width: 60px;
-    transition: width 0.3s ease;
+  width: 60px;
+  transition: width 0.3s ease;
 }
 
 /* Enhanced focus states for accessibility */
 .btn-purchase:focus-visible,
 .view-toggle .btn:focus-visible {
-    outline: 3px solid var(--primary);
-    outline-offset: 3px;
+  outline: 3px solid var(--primary);
+  outline-offset: 3px;
 }
